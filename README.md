@@ -34,19 +34,21 @@ Generator-based processors are used instead of full instruction-level CPU cores 
 
 ## Directory Structure
 
+```
 Multiprocessor_System_MS1_Trad/
 ├── README.md
 ├── doc/
-│ ├── README.md
-│ └── ECE_593__Pre_Silicon_Validation.pdf
+│   ├── README.md
+│   └── ECE_593__Pre_Silicon_Validation.pdf
 ├── rtl/
-│ ├── README.md
-│ ├── generator.sv
-│ └── mp_top.sv
+│   ├── README.md
+│   ├── generator.sv
+│   └── mp_top.sv
 └── TRAD_TB/
-├── README.md
-├── mp_top_tb.sv
-└── run.do
+    ├── README.md
+    ├── mp_top_tb.sv
+    └── run.do
+```
 
 ## How to Run Simulation
 
@@ -55,5 +57,3 @@ Multiprocessor_System_MS1_Trad/
    cd Multiprocessor_System_MS1_Trad/TRAD_TB
 3. Run the simulation:
    do run.do
-
-
