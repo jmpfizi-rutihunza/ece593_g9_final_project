@@ -18,7 +18,7 @@ Prof. Venkatesh Patil
 
 * Janvier Mpfizi Rutihunza
 * Frezewd Debebe
-* Sal Esmael
+* Sal Esmaeil
 
 ## Milestone Objective
 
@@ -55,3 +55,4 @@ Multiprocessor_System_MS1_Trad/
    cd Multiprocessor_System_MS1_Trad/TRAD_TB
 3. Run the simulation:
    do run.do
+
