@@ -52,9 +52,10 @@ Multiprocessor_System_MS1_Trad/
 
 ## How to Run Simulation
 
-1. Launch QuestaSim / ModelSim
+1. Launch QuestaSim
 2. Navigate to the testbench directory:
    cd Multiprocessor_System_MS1_Trad/TRAD_TB
 3. Run the simulation:
    do run.do
+
 
