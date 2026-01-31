@@ -27,3 +27,37 @@ The goal is to validate:
 Generator-based processors are used instead of full CPU cores to simplify early system-level validation.
 
 ## Directory Structure
+Multiprocessor_System_MS1_Trad/
+├── README.md
+├── doc/
+│   ├── README.md
+│   └── ECE_593__Pre_Silicon_Validation.pdf
+├── rtl/
+│   ├── README.md
+│   ├── generator.sv
+│   └── mp_top.sv
+└── TRAD_TB/
+    ├── README.md
+    ├── mp_top_tb.sv
+    └── run.do
+
+How to Run Simulation
+
+Launch QuestaSim 
+
+Navigate to the testbench directory:
+
+cd Multiprocessor_System_MS1_Trad/TRAD_TB
+
+
+Run the simulation:
+
+do run.do
+
+Expected Result
+
+Simulation runs without errors
+
+All generator-based processors complete execution
+
+PASS messages are displayed for successful read/write verification
