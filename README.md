@@ -1,4 +1,4 @@
-# ECE-593 Milestone 1 – Traditional Verification
+# ECE-593 Milestone 1
 
 ## Project
 
@@ -57,3 +57,4 @@ Multiprocessor_System_MS1_Trad/
    cd Multiprocessor_System_MS1_Trad/TRAD_TB
 3. Run the simulation:
    do run.do
+
