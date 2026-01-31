@@ -1,6 +1,3 @@
-# ece593_g9_final_project
+# Multiprocessor_System_MS1_Trad
 
-## How to Run Simulation
-1. Launch QuestaSim
-2. Navigate to the project directory
-3. Run
+
