@@ -1,4 +1,4 @@
-class monitor_out; // Triggers on valid_out
+class monitor_out; // Triggers on rvalid
   virtual intf.mon vif;
   mailbox #(transaction) mbox;   // sends response transactions to scoreboard
 
@@ -12,12 +12,12 @@ class monitor_out; // Triggers on valid_out
       @(vif.mon_cb); //wait for sampling point (posedge clk + #1step) so signals are sampled just after the clock edge to avoid race conditions.
 
 
-      if (vif.mon_cb.valid_out) begin //      // Capture only when DUT output is valid
+      if (vif.mon_cb.rvalid) begin //      // Capture only when DUT output is valid
         transaction tr = new();  // new snapshot each time
 // Copy output-side interface signals into the transaction; this converts signals into transactiona.
         tr.data_out  = vif.mon_cb.data_out;
-        tr.valid_out = vif.mon_cb.valid_out;
-        $display("[moniot_out] data_out=%0h valid_out=%0b",tr.data_out, tr.valid_out);
+        tr.rvalid = vif.mon_cb.rvalid;
+        $display("[moniot_out] data_out=%0h rvalid=%0b",tr.data_out, tr.rvalid);
         mbox.put(tr); // Send the captured transaction to the scoreboard via mailbox.
       end
     end
