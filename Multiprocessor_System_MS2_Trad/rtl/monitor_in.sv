@@ -18,7 +18,7 @@ class monitor_in; // triggers on we or read_en (input-side activity)
    // Copy input-side interface signals into the transaction; this converts signals into transactiona.
         tr.addr    = vif.mon_cb.addr;
         tr.data_in = vif.mon_cb.data_in;
-        tr.we      = vif.mon_cb.we;
+        tr.we     = vif.mon_cb.we;
         tr.read_en = vif.mon_cb.read_en;
         tr.reset_n = vif.mon_cb.reset_n;
 
