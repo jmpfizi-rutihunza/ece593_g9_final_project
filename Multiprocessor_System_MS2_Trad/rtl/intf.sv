@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////
+//	ECE-593 Project				//
+//	Multiprocessor System			//
+//	Milestone2 - class based verification	//
+//	Prepared by Janvier Mpfizi Rutihunza		//
+//////////////////////////////////////////////////
 interface intf(input logic clk);
   parameter ADDR_WIDTH = 11;
   parameter DATA_WIDTH = 8;
@@ -48,6 +54,7 @@ interface intf(input logic clk);
 	modport mon (clocking mon_cb);
 
 endinterface
+
 
 
 
