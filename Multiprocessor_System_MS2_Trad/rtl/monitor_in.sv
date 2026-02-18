@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////
+//	ECE-593 Project				//
+//	Multiprocessor System			//
+//	Milestone2 - class based verification	//
+//	Prepared by Janvier Mpfizi Rutihunza		//
+//////////////////////////////////////////////////
 class monitor_in; // triggers on we or read_en (input-side activity)
   virtual intf.mon vif;
   mailbox #(transaction) mbox; // The monitor puts transactions in this mailbox; the scoreboard reads them out.
