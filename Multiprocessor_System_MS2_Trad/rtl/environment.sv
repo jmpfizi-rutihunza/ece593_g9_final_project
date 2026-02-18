@@ -10,6 +10,7 @@
 `include "monitor_in.sv"
 `include "monitor_out.sv"
 `include "scoreboard.sv"
+`include "coverage_collector.sv"
 
 class environment;
 	
@@ -26,6 +27,8 @@ class environment;
 	mailbox mon_out2scb;
 
 	virtual intf vif;
+	//Handler for functional coverage
+	coverage_collector cov;
 
 	//constructors
 	function new(virtual intf vif);
@@ -36,6 +39,9 @@ class environment;
         	gen2driv    = new();
         	mon_in2scb  = new();
         	mon_out2scb = new();
+		
+		//instantiate coverage
+		cov = new();
         
         	// Instantiate Components
         	gen     = new(gen2driv);
@@ -57,9 +63,17 @@ class environment;
         	fork
             		gen.main();      // Generator starts producing tx_count transactions
             		driv.main();     // Driver starts feeding the Arbiter
-            		mon_in.main();   // Monitor_In starts capturing operands A and B
-            		mon_out.main();  // Monitor_Out starts capturing bus results
+            		mon_in.run();   // Monitor_In starts capturing operands A and B
+            		mon_out.run();  // Monitor_Out starts capturing bus results
             		scb.run();       // Scoreboard starts comparing results
+
+
+			forever begin
+                		transaction tr;
+                		mon_in2scb.peek(tr); 
+                		cov.sample(tr);
+				@(vif.mon_cb);
+            		end
         	join_any            
     	endtask
 
