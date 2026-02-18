@@ -21,6 +21,7 @@ class monitor_out; // Triggers on rvalid
       if (vif.mon_cb.rvalid) begin //      // Capture only when DUT output is valid
         transaction tr = new();  // new snapshot each time
 // Copy output-side interface signals into the transaction; this converts signals into transactiona.
+        tr.core_id = vif.mon_cb.core_id;
         tr.data_out  = vif.mon_cb.data_out;
         tr.rvalid = vif.mon_cb.rvalid;
         $display("[moniot_out] data_out=%0h rvalid=%0b",tr.data_out, tr.rvalid);
