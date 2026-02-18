@@ -9,6 +9,11 @@ interface intf(input logic clk);
   logic write_en;;
   logic valid_out;
 
+	logic [1:0] core_id;
+	logic [3:0] opcode;
+	logic req;
+	logic gnt;
+
   // Driver clocking block (TB drives DUT inputs)
   clocking drv_cb @(posedge clk);
     default input #1step output #1step;
@@ -43,3 +48,4 @@ interface intf(input logic clk);
 	modport mon (clocking mon_cb);
 
 endinterface
+
