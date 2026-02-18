@@ -6,10 +6,10 @@ interface intf(input logic clk);
   logic [DATA_WIDTH-1:0] data_in;
   logic [DATA_WIDTH-1:0] data_out;
   logic [ADDR_WIDTH-1:0] addr;
-  logic write_en;;
-  logic valid_out;
-
-	logic [1:0] core_id;
+  logic we;
+  logic rvalid;
+  
+  	logic [1:0] core_id;
 	logic [3:0] opcode;
 	logic req;
 	logic gnt;
@@ -19,11 +19,11 @@ interface intf(input logic clk);
     default input #1step output #1step;
     output data_in;
     output addr;
-    output write_en;
+    output we;
     output read_en;
     output reset_n;
     input  data_out;
-    input  valid_out;
+    input  rvalid;
   endclocking
 
   // this Clocking Block will be used by the MONITOR to observe activity in a race-free way.
@@ -32,11 +32,11 @@ interface intf(input logic clk);
     default input #1step; // add a small delay between clocks
     input data_in;
     input addr;
-    input write_en;;
+    input we;;
     input read_en;
     input reset_n;
     input data_out;
-    input valid_out;
+    input rvalid;
   endclocking
   
   /*organize access to an interface, preventing components from accidentally driving or reading the wrong signals.
@@ -48,4 +48,6 @@ interface intf(input logic clk);
 	modport mon (clocking mon_cb);
 
 endinterface
+
+
 
