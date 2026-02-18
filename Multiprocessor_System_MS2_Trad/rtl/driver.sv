@@ -1,7 +1,8 @@
-//	ECE-593 Project				//
-//	Multiprocessor System			//
-//	Milestone2 - class based verification	//
-//	Prepared by Frezewd Debebe		//
+//////////////////////////////////////////////////
+//	ECE-593 Project				                //
+//	Multiprocessor System			            //
+//	Milestone2 - class based verification	    //
+//	Prepared by Frezewd Debebe		            //
 //////////////////////////////////////////////////
 
 class driver;
@@ -55,4 +56,5 @@ class driver;
             		$display("[DRV] Finished Core %0d transaction at %0t", tx.core_id, $time);
         	end
     	endtask
+
 endclass
