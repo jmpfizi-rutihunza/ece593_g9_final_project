@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////
+//	ECE-593 Project				//
+//	Multiprocessor System			//
+//	Milestone2 - class based verification	//
+//	Prepared by Janvier Mpfizi Rutihunza		//
+//////////////////////////////////////////////////
 class monitor_out; // Triggers on rvalid
   virtual intf.mon vif;
   mailbox #(transaction) mbox;   // sends response transactions to scoreboard
