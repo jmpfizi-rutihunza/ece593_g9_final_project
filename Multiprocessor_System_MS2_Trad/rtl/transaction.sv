@@ -12,6 +12,7 @@ class transaction;
   	rand bit [10:0] addr;     // 11-bit address for 2KB memory 
 
 	bit we;       // Write enable
+	bit read_en;
 	bit req;      // Request signal
 	bit gnt;      // Grant  
 	bit rvalid;   // Read data valid
@@ -42,7 +43,8 @@ class transaction;
     		copy.core_id = this.core_id;
     		copy.opcode  = this.opcode;
     		copy.addr    = this.addr;
-		copy.we      = this.we;      
+		copy.we      = this.we; 
+		copy.read_en = this.read_en;     
     		copy.req     = this.req;    
     		copy.gnt     = this.gnt;     
     		copy.rvalid  = this.rvalid;  
