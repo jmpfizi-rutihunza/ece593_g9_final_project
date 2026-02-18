@@ -1,21 +1,20 @@
 interface intf(input logic clk);
   parameter ADDR_WIDTH = 11;
   parameter DATA_WIDTH = 8;
-
+  logic reset_n;
+  logic read_en;
   logic [DATA_WIDTH-1:0] data_in;
   logic [DATA_WIDTH-1:0] data_out;
   logic [ADDR_WIDTH-1:0] addr;
-  logic we;
+  logic write_en;;
   logic valid_out;
-  logic reset_n;
-  logic read_en;
 
   // Driver clocking block (TB drives DUT inputs)
   clocking drv_cb @(posedge clk);
     default input #1step output #1step;
     output data_in;
     output addr;
-    output we;
+    output write_en;
     output read_en;
     output reset_n;
     input  data_out;
@@ -28,7 +27,7 @@ interface intf(input logic clk);
     default input #1step; // add a small delay between clocks
     input data_in;
     input addr;
-    input we;
+    input write_en;;
     input read_en;
     input reset_n;
     input data_out;
@@ -44,6 +43,3 @@ interface intf(input logic clk);
 	modport mon (clocking mon_cb);
 
 endinterface
-
-
-  
