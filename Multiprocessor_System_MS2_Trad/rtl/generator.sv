@@ -12,6 +12,8 @@ class generator;
 	mailbox gen2driv;
 	int tx_count;
 
+	event ended;
+
 	function new (mailbox gen2driv);
 		this.gen2driv = gen2driv;
 	endfunction
@@ -25,5 +27,7 @@ class generator;
 		end
 		
 		$display ("Generator completed");
+
+		-> ended;
 	endtask
 endclass
