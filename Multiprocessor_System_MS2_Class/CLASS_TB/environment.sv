@@ -22,7 +22,8 @@ class environment;
 
 	virtual intf vif;
 	//Handler for functional coverage
-	coverage_collector cov;
+	coverage cov;
+
 
 	//constructors
 	function new(virtual intf vif);
@@ -91,5 +92,6 @@ class environment;
 
 endclass
 		
+
 
 
