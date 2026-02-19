@@ -37,54 +37,45 @@ class driver;
   task main();
     transaction tx;
 
-    // Do reset once at start
-    reset();
-
     forever begin
       gen2driv.get(tx);
 
+      // Drive request + fields on next clock
       @(vif.drv_cb);
 
-      // Drive request signals
       vif.drv_cb.core_id <= tx.core_id;
-      vif.drv_cb.opcode  <= tx.opcode;
+      vif.drv_cb.opcode  <= tx.opcode;     // trace/coverage only
       vif.drv_cb.addr    <= tx.addr;
-      vif.drv_cb.req     <= 1'b1;
-
-      // Defaults each transaction
-      vif.drv_cb.we      <= 1'b0;
-      vif.drv_cb.read_en <= 1'b0;
       vif.drv_cb.data_in <= tx.data;
 
-      $display("[DRIVER] id=%0d core=%0d op=%0h addr=%0d data=%0h",
-               tx.burst_id, tx.core_id, tx.opcode, tx.addr, tx.data);
+      // IMPORTANT: drive we/read_en from transaction (not opcode)
+      vif.drv_cb.we      <= tx.we;
+      vif.drv_cb.read_en <= tx.read_en;
 
-      // Wait for grant
+      // Assert req
+      vif.drv_cb.req     <= 1'b1;
+
+      $display("[DRV] core=%0d op=%0h addr=%0d we=%0b rd=%0b data_in=%0h",
+               tx.core_id, tx.opcode, tx.addr, tx.we, tx.read_en, tx.data);
+
+      // Wait for grant (gnt is combinational from req in this DUT)
       wait (vif.drv_cb.gnt === 1'b1);
 
-      // Example decode:
-      // STORE opcode = 4'b0110  -> write
-      // otherwise -> read (or no-write)
-      if (tx.opcode == 4'b0110) begin
-        vif.drv_cb.we      <= 1'b1;
-        vif.drv_cb.read_en <= 1'b0;
-        $display("[DRIVER] WRITE id=%0d addr=%0d data=%0h", tx.burst_id, tx.addr, tx.data);
-      end
-      else begin
-        vif.drv_cb.we      <= 1'b0;
-        vif.drv_cb.read_en <= 1'b1;
-        $display("[DRIVER] READ  id=%0d addr=%0d", tx.burst_id, tx.addr);
-      end
+      // Keep signals stable until response is observed (1-cycle response DUT)
+      // This makes monitor_out capture correct core/op/addr context.
+      do begin
+        @(vif.drv_cb);
+      end while (vif.drv_cb.rvalid !== 1'b1);
 
-      // Hold one cycle
+      $display("[DRV] rvalid seen: core=%0d addr=%0d data_out=%0h",
+               tx.core_id, tx.addr, vif.drv_cb.data_out);
+
+      // Deassert after response
       @(vif.drv_cb);
-
-      // Deassert
       vif.drv_cb.req     <= 1'b0;
       vif.drv_cb.we      <= 1'b0;
       vif.drv_cb.read_en <= 1'b0;
 
-      $display("[DRV] Finished Core %0d transaction at %0t", tx.core_id, $time);
     end
   endtask
 
