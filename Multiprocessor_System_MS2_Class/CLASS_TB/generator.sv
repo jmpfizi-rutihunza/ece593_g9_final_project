@@ -23,35 +23,39 @@ class generator;
 
   transaction tx;
 
-  // Directed sweep → guarantees coverage
-  for (int c = 0; c < 4; c++) begin
-    for (int op = 0; op <= 4'hD; op++) begin
-      for (int w = 0; w < 2; w++) begin
+// ---------- Directed sweep ----------
+for (int c = 0; c < 4; c++) begin
+  for (int op = 0; op <= 4'hD; op++) begin
+    for (int w = 0; w < 2; w++) begin
+      tx = new();
 
-        tx = new();
+      tx.core_id = c;
+      tx.opcode  = op;
+      tx.we      = w;
+      tx.read_en = ~w;
 
-        tx.core_id = c;
-        tx.opcode  = op;
-        tx.we      = w;
-        tx.read_en = ~w;
+      tx.addr = $urandom_range(0,2047);
+      tx.data = $urandom;
 
-        tx.addr = $urandom_range(0,2047);
-        tx.data = $urandom;
-
-        gen2driv.put(tx);
-
-      end
+      gen2driv.put(tx);
     end
   end
+end
 
-  // Random phase (important for code coverage)
-  repeat (200) begin
-    tx = new();
-    assert(tx.randomize());
-    gen2driv.put(tx);
-  end
+// ⭐ PUT IT HERE (random closure phase)
+repeat (200) begin
+  tx = new();
 
-  -> ended;
+  assert(tx.randomize() with {
+    addr inside {[0:10], [2037:2047]};
+  });
+
+  gen2driv.put(tx);
+end
+
+-> ended;
+
 
 endtask
+
 
