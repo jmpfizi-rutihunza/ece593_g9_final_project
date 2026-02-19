@@ -28,7 +28,7 @@ class monitor_in;
             tx = new();
 
            
-            // Do NOT use core_id_out unless your covergroup was built for it
+            
             tx.core_id = vif.mon_cb.core_id;
             tx.opcode  = vif.mon_cb.opcode;
             tx.addr    = vif.mon_cb.addr;
