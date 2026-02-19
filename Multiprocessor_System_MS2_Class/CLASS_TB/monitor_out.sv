@@ -1,40 +1,35 @@
-//////////////////////////////////////////////////
-//	ECE-593 Project				//
-//	Multiprocessor System			//
-//	Milestone2 - class based verification	//
-//	Prepared by Janvier Mpfizi Rutihunza		//
-//////////////////////////////////////////////////
-class monitor_out; // Triggers on rvalid
-  virtual intf.mon vif;
-  mailbox #(transaction) mbox;   // sends response transactions to scoreboard
+`ifndef MONITOR_OUT_SV
+`define MONITOR_OUT_SV
 
-  function new(virtual intf.mon vif, mailbox #(transaction) mbox);
-    this.vif  = vif;
-    this.mbox = mbox;
-  endfunction
+class monitor_out;
 
-  task run();
-    forever begin
-      @(vif.mon_cb);
+   virtual intf vif;
+   mailbox #(transaction) mon2sb;
 
-      // Capture only when DUT output is valid
-      if (vif.mon_cb.rvalid) begin
-        transaction tr = new();
+   function new(virtual intf vif,
+                mailbox #(transaction) mon2sb);
+      this.vif   = vif;
+      this.mon2sb = mon2sb;
+   endfunction
 
-        // Capture ID/context + actual output
-        tr.core_id = vif.mon_cb.core_id;
-        tr.opcode  = vif.mon_cb.opcode;
-        tr.addr    = vif.mon_cb.addr;
+   task run();
+      transaction tx;
 
-        // Put DUT output into the same field the scoreboard checks
-        tr.data    = vif.mon_cb.data_out;
+      forever begin
+         tx = new();
 
-        $display("[oMon] core=%0d op=%0h addr=%0d data_out=%0h rvalid=%0b",
-                 tr.core_id, tr.opcode, tr.addr, tr.data, vif.mon_cb.rvalid);
+         // sample on monitor clocking block
+         @(vif.mon_cb);
 
-        mbox.put(tr);
+         tx.data   = vif.mon_cb.data_out;   // <-- FIXED
+         tx.rvalid = vif.mon_cb.rvalid;
+         tx.gnt    = vif.mon_cb.gnt;
+
+         mon2sb.put(tx);
       end
-    end
-  endtask
+   endtask
 
 endclass
+
+`endif
+
