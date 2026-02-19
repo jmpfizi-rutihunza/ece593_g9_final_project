@@ -10,7 +10,6 @@
 `include "monitor_in.sv"
 `include "monitor_out.sv"
 `include "scoreboard.sv"
-`include "coverage_collector.sv"
 
 class environment;
 	
@@ -97,3 +96,4 @@ class environment;
 
 endclass
 		
+
