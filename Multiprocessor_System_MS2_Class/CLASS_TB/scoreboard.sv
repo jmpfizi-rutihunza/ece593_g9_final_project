@@ -59,7 +59,7 @@ class scoreboard;
             		4'b1100: tx.expected_val = (tx.A * 3);               // (A*3) 
             		4'b1101: tx.expected_val = (tx.A * tx.B) + tx.B;     // (A*B)+B 
             
-            		default: tr.expected_val = 8'h00; 
+            		default: tx.expected_val = 8'h00; 
         	endcase
         
         	// Push the predicted transaction into the FIFO for the specific Core ID
@@ -85,4 +85,5 @@ class scoreboard;
             		end
         	end
     	endfunction
+
 endclass
