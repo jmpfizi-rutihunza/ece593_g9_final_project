@@ -36,23 +36,7 @@ module tb_top;
 
   // connect reset
   assign vif.reset_n = rst_n;
-
-  // DUT instance (replace dut_stub with your real DUT)
-  dut_stub dut (
-    .clk       (clk),
-    .reset_n   (vif.reset_n),
-    .core_id   (vif.core_id),
-    .opcode    (vif.opcode),
-    .addr      (vif.addr),
-    .data_in   (vif.data_in),
-    .data_out  (vif.data_out),
-    .req       (vif.req),
-    .gnt       (vif.gnt),
-    .we        (vif.we),
-    .rvalid    (vif.rvalid),
-    .burst_id  (vif.burst_id)
-  );
-
+  
   environment env;
 
   initial begin
