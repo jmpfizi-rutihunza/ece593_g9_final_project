@@ -22,7 +22,7 @@ class transaction;
   	//operands
   	rand bit [7:0] A;         // Operand A (1 byte) 
   	rand bit [7:0] B;         // Operand B (1 byte) 
-  	bit [7:0] data;           // Actual data collected from the bus
+  	rand bit [7:0] data;           // Actual data collected from the bus
   
   
   	bit [7:0] expected_val;   // Used by the scoreboard to store the predicted result
@@ -58,4 +58,5 @@ class transaction;
   	endfunction
 
 endclass
+
 
