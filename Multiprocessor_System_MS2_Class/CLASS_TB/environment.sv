@@ -5,11 +5,6 @@
 //	Prepared by Frezewd Debebe		//
 //////////////////////////////////////////////////
 
-`include "generator.sv"
-`include "driver.sv"
-`include "monitor_in.sv"
-`include "monitor_out.sv"
-`include "scoreboard.sv"
 
 class environment;
 	
@@ -96,4 +91,5 @@ class environment;
 
 endclass
 		
+
 
