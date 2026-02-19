@@ -39,7 +39,7 @@ module tb_top;
     .rvalid   (vif.rvalid),
     .data_out (vif.data_out),
 
-    .burst_id (vif.burst_id)
+    .burst_id (32'd0),
   );
 
   environment env;
