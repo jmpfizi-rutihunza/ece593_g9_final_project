@@ -6,7 +6,8 @@
 //////////////////////////////////////////////////
 
 class transaction;
- 
+
+	int burst_id;
 	rand bit [1:0] core_id;   // Id for the 4 cores (0, 1, 2, 3)
   	rand bit [3:0] opcode;    // The 4-bit instruction code 
   	rand bit [10:0] addr;     // 11-bit address for 2KB memory 
@@ -54,4 +55,5 @@ class transaction;
 		copy.expected_val = this.expected_val;
     		return copy;
   	endfunction
+
 endclass
