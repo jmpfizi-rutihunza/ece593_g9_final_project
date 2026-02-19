@@ -21,26 +21,37 @@ class generator;
   endfunction
 
   task main();
-    $display("[GENERATOR] started (tx_count=%0d)", tx_count);
 
-    repeat (tx_count) begin
-      tx = new();
+  transaction tx;
 
-      tx.burst_id = id++;
+  // Directed sweep → guarantees coverage
+  for (int c = 0; c < 4; c++) begin
+    for (int op = 0; op <= 4'hD; op++) begin
+      for (int w = 0; w < 2; w++) begin
 
-      if (!tx.randomize()) begin
-        $error("[GENERATOR] randomize FAILED for id=%0d", tx.burst_id);
-        continue;
+        tx = new();
+
+        tx.core_id = c;
+        tx.opcode  = op;
+        tx.we      = w;
+        tx.read_en = ~w;
+
+        tx.addr = $urandom_range(0,2047);
+        tx.data = $urandom;
+
+        gen2driv.put(tx);
+
       end
-
-      $display("[GENERATOR] id=%0d core=%0d op=%0h we=%0b read_en=%0b addr=%0d A=%0h B=%0h data=%0h",
-               tx.burst_id, tx.core_id, tx.opcode, tx.we, tx.read_en, tx.addr, tx.A, tx.B, tx.data);
-
-      gen2driv.put(tx);
     end
+  end
 
-    $display("[GENERATOR] completed");
-    -> ended;
-  endtask
+  // Random phase (important for code coverage)
+  repeat (200) begin
+    tx = new();
+    assert(tx.randomize());
+    gen2driv.put(tx);
+  end
 
-endclass
+  -> ended;
+
+endtask
