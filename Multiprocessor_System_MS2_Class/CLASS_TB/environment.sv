@@ -11,24 +11,24 @@ import tb_pkg::*;
 
 class environment;
 
-   // components
+ 
    generator    gen;
    driver       driv;
    monitor_in   mon_in;
    monitor_out  mon_out;
    scoreboard   scb;
 
-   // mailboxes
+   
    mailbox #(transaction) gen2driv;
    mailbox #(transaction) mon_in2scb;
    mailbox #(transaction) mon_out2scb;
 
    virtual intf vif;
 
-   // functional coverage handler
+  
    coverage_collector cov;
 
-   // constructor
+   
    function new(virtual intf vif);
       this.vif = vif;
 
@@ -37,10 +37,10 @@ class environment;
       mon_in2scb  = new();
       mon_out2scb = new();
 
-      // Coverage collector instance
+     
       cov = new();
 
-      // Instantiate components
+      
       gen     = new(gen2driv);
       driv    = new(gen2driv, vif, gen);
       mon_in  = new(vif, mon_in2scb, cov);
@@ -90,4 +90,5 @@ class environment;
 endclass
 
 `endif
+
 
