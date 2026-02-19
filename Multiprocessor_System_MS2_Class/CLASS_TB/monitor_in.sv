@@ -20,14 +20,14 @@ class monitor_in;
       transaction tx;
 
       forever begin
-         // sample on monitor clocking block edge
+         
          @(vif.mon_cb);
 
-         // Only sample real requests (important for correct coverage)
+         
          if (vif.mon_cb.req) begin
             tx = new();
 
-            // IMPORTANT: use core_id (the TB drives this)
+           
             // Do NOT use core_id_out unless your covergroup was built for it
             tx.core_id = vif.mon_cb.core_id;
             tx.opcode  = vif.mon_cb.opcode;
@@ -36,10 +36,10 @@ class monitor_in;
             tx.A       = vif.mon_cb.A;
             tx.B       = vif.mon_cb.B;
 
-            // sample functional coverage immediately after capture
+           
             cov.sample(tx);
 
-            // send to scoreboard
+            
             mon2sb.put(tx);
          end
       end
