@@ -14,7 +14,6 @@
 `include "scoreboard.sv"
 `include "coverage.sv"
 `include "environment.sv"
-`include "dut_stub.sv"   // replace later
 
 module tb_top;
 
