@@ -1,97 +1,94 @@
-//////////////////////////////////////////////////
-//	ECE-593 Project				//
-//	Multiprocessor System			//
-//	Milestone2 - class based verification	//
-//	Prepared by Frezewd Debebe		//
-//////////////////////////////////////////////////
+`ifndef ENVIRONMENT_SV
+`define ENVIRONMENT_SV
 
+import tb_pkg::*;
+
+`include "generator.sv"
+`include "driver.sv"
+`include "monitor_in.sv"
+`include "monitor_out.sv"
+`include "scoreboard.sv"
 
 class environment;
 
-  // components
-  generator    gen;
-  driver       driv;
-  monitor_in   mon_in;
-  monitor_out  mon_out;
-  scoreboard   scb;
+   // components
+   generator    gen;
+   driver       driv;
+   monitor_in   mon_in;
+   monitor_out  mon_out;
+   scoreboard   scb;
 
-  // mailboxes
-  mailbox gen2driv;
+   // mailboxes
+   mailbox #(transaction) gen2driv;
+   mailbox #(transaction) mon_in2scb;
+   mailbox #(transaction) mon_out2scb;
 
-  // input mailbox bridge: monitor -> env -> scoreboard
-  mailbox #(transaction) mon_in2env;
-  mailbox #(transaction) mon_in2scb;
+   virtual intf vif;
 
-  // output mailbox directly monitor -> scoreboard
-  mailbox #(transaction) mon_out2scb;
+   // functional coverage handler
+   coverage_collector cov;
 
-  virtual intf vif;
+   // constructor
+   function new(virtual intf vif);
+      this.vif = vif;
 
-  // functional coverage
-  coverage cov;
+      // Mailbox instances
+      gen2driv    = new();
+      mon_in2scb  = new();
+      mon_out2scb = new();
 
-  function new(virtual intf vif);
-    this.vif = vif;
+      // Coverage collector instance
+      cov = new();
 
-    // Mailboxes
-    gen2driv    = new();
-    mon_in2env  = new();
-    mon_in2scb  = new();
-    mon_out2scb = new();
+      // Instantiate components
+      gen     = new(gen2driv);
+      driv    = new(gen2driv, vif, gen);
+      mon_in  = new(vif, mon_in2scb, cov);
+      mon_out = new(vif, mon_out2scb);
+      scb     = new(mon_in2scb, mon_out2scb);
+   endfunction
 
-    // Coverage
-    cov = new();
 
-    // Components
-    gen     = new(gen2driv);
-    driv    = new(gen2driv, vif.drv);
+   task pre_test();
+      $display("[ENV] Resetting");
+      driv.reset();
+   endtask
 
-    // NOTE: monitor constructors are (vif, mailbox)
-    mon_in  = new(vif.mon, mon_in2env);
-    mon_out = new(vif.mon, mon_out2scb);
 
-    // Scoreboard consumes env->scb input mailbox + output mailbox
-    scb     = new(mon_in2scb, mon_out2scb);
-  endfunction
+   task test();
+      $display("[ENV] Starting Test Execution...");
+      fork
+         gen.main();
+         driv.main();
+         mon_in.run();
+         mon_out.run();
+         scb.run();
+      join_none
+   endtask
 
-  task pre_test();
-    $display("[ENV] Resetting...");
-    driv.reset();
-  endtask
+  
+   task post_test();
+      // Wait until generator is done producing transactions
+      wait(gen.ended.triggered);
 
-  task test();
-    $display("[ENV] Starting Test Execution...");
-    fork
-      gen.main();
-      driv.main();
-      mon_in.run();
-      mon_out.run();
-      scb.run();
+      // Wait until the driver has consumed everything from generator mailbox
+      wait(gen2driv.num() == 0);
 
-      // Coverage bridge: take each input transaction once, sample, then forward to scoreboard
-      forever begin
-        transaction tr;
-        mon_in2env.get(tr);
-        cov.sample(tr);
-        mon_in2scb.put(tr);
-      end
-    join_any
-  endtask
+      // Give monitors a few cycles to sample the last transaction
+      repeat(20) @(vif.mon_cb);
 
-  task post_test();
-    // Wait until generator ends
-    wait(gen.ended.triggered);
-    repeat (50) @(vif.mon_cb);
+      $display("[ENV] --- All Transactions Driven/Monitored ---");
+      $display("[ENV] Time: %0t", $time);
+      $finish;
+   endtask
 
-    $display("[ENV] --- All Transactions Verified ---");
-    $display("[ENV] Time: %0t", $time);
-    $finish;
-  endtask
 
-  task run();
-    pre_test();
-    test();
-    post_test();
-  endtask
+   task run();
+      pre_test();
+      test();
+      post_test();
+   endtask
 
 endclass
+
+`endif
