@@ -5,29 +5,46 @@
 //	Prepared by Frezewd Debebe		//
 //////////////////////////////////////////////////
 
-`include "transaction.sv"
-
 class generator;
-	rand transaction tx;
-	mailbox gen2driv;
-	int tx_count;
 
-	event ended;
+  transaction tx;
+  mailbox #(transaction) gen2driv;
+  int tx_count;
 
-	function new (mailbox gen2driv);
-		this.gen2driv = gen2driv;
-	endfunction
+  event ended;
 
-	task main();
-		$display ("Generator started");
-		repeat (tx_count) begin
-			tx = new();
-			assert (tx.randomize());
-			gen2driv.put(tx.copy());
-		end
-		
-		$display ("Generator completed");
+  // Transaction numbering (burst id)
+  static int id = 0;
 
-		-> ended;
-	endtask
+  function new(mailbox #(transaction) gen2driv, int tx_count = 20);
+    this.gen2driv = gen2driv;
+    this.tx_count = tx_count;
+  endfunction
+
+  task main();
+    $display("[GENERATOR] started (tx_count=%0d)", tx_count);
+
+    repeat (tx_count) begin
+      tx = new();
+
+      // Assign burst id BEFORE randomize/put
+      tx.burst_id = id++;
+
+      // Randomize the rest
+      if (!tx.randomize()) begin
+        $error("[GENERATOR] randomize FAILED for id=%0d", tx.burst_id);
+      end
+
+      // Transcript requirement print
+      $display("[GENERATOR] id=%0d core=%0d op=%0h we=%0b read_en=%0b addr=%0d A=%0h B=%0h data=%0h",
+               tx.burst_id, tx.core_id, tx.opcode, tx.we, tx.read_en, tx.addr, tx.A, tx.B, tx.data);
+
+      // Send ORIGINAL object (preferred). If you want copy(), keep copy() but ensure it copies burst_id.
+      gen2driv.put(tx);
+    end
+
+    $display("[GENERATOR] completed");
+    -> ended;
+  endtask
+
 endclass
