@@ -6,9 +6,7 @@ Contents:
 
 - Updated Verification Plan
 - Class-based Testbench Report
-- Coverage screenshots (optional)
-- Simulation results (optional)
-
+  
 The report explains:
 - Testbench architecture
 - Component responsibilities
