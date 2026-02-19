@@ -1,35 +1,44 @@
-transcript on
-set NoQuitOnFinish 1
+# ECE 593 Multiprocessor system project
+quit -sim
 
-# Create library
-if {[file exists work]} { vdel -lib work -all }
 vlib work
+vmap work work
 
-# Compile (single compilation unit + coverage)
-vlog -sv -mfcu -cover bcesf \
-rtl/mp_dut.sv \
-CLASS_TB/intf.sv \
-CLASS_TB/transaction.sv \
-CLASS_TB/coverage.sv \
-CLASS_TB/generator.sv \
-CLASS_TB/driver.sv \
-CLASS_TB/monitor_in.sv \
-CLASS_TB/monitor_out.sv \
-CLASS_TB/scoreboard.sv \
-CLASS_TB/environment.sv \
-CLASS_TB/tb_top.sv
+# =============================
+# Compile package first
+# =============================
+vlog -sv -cover bcst tb_pkg.sv
 
-# Simulate with coverage
-vsim -coverage work.tb_top
+# =============================
+# Compile environment (it includes the TB class files)
+# environment.sv must include:
+#   generator.sv, driver.sv, monitor_in.sv, monitor_out.sv, scoreboard.sv
+# =============================
+vlog -sv -cover bcst environment.sv
+
+# =============================
+# Compile interface + DUT + top
+# =============================
+vlog -sv -cover bcst intf.sv
+vlog -sv -cover bcst mp_dut.sv
+vlog -sv -cover bcst tb_top.sv
+
+# =============================
+# Optimize with Coverage
+# =============================
+vopt tb_top -o top_opt +acc -cover sbc
+
+# =============================
+# Simulate
+# =============================
+vsim top_opt -coverage
+
+# Waves
+add wave -position insertpoint sim:/tb_top/vif/*
 
 # Run
 run -all
 
-# Save coverage database
-coverage save sim.ucdb
-
-# Reports
-vcover report -details sim.ucdb > func_cov.txt
-vcover report -details -code bcesf sim.ucdb > code_cov.txt
-
-echo "MS2 simulation completed"
+# Coverage report
+coverage report -detail -cvg -output functional_coverage_report.txt
+coverage report -summary
