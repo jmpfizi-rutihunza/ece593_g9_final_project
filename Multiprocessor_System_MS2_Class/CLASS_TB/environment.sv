@@ -68,13 +68,11 @@ class environment;
 
   
    task post_test();
-      // Wait until generator is done producing transactions
+
       wait(gen.ended.triggered);
 
-      // Wait until the driver has consumed everything from generator mailbox
       wait(gen2driv.num() == 0);
-
-      // Give monitors a few cycles to sample the last transaction
+      
       repeat(20) @(vif.mon_cb);
 
       $display("[ENV] --- All Transactions Driven/Monitored ---");
@@ -92,3 +90,4 @@ class environment;
 endclass
 
 `endif
+
