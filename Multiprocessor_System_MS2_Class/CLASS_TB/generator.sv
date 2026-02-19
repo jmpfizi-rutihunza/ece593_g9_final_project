@@ -1,80 +1,74 @@
-//////////////////////////////////////////////////
-//	ECE-593 Project				//
-//	Multiprocessor System			//
-//	Milestone2 - class based verification	//
-//	Prepared by Frezewd Debebe		//
-//////////////////////////////////////////////////
+`ifndef GENERATOR_SV
+`define GENERATOR_SV
 
 class generator;
 
-  // Mailbox to driver
-  mailbox #(transaction) gen2driv;
+   mailbox #(transaction) gen2driv;
+   event ended;
 
-  // Optional legacy count (not used now but kept)
-  int tx_count;
+   // tb_top.sv expects this name
+   int tx_count;
 
-  // End event
-  event ended;
+   function new(mailbox #(transaction) gen2driv);
+      this.gen2driv = gen2driv;
+      tx_count = 200;   // you can increase if you want
+   endfunction
 
-  static int id = 0;
 
-  function new(mailbox #(transaction) gen2driv, int tx_count = 20);
-    this.gen2driv = gen2driv;
-    this.tx_count = tx_count;
-  endfunction
+   task main();
+      transaction tx;
 
-  //------------------------------------------------
-  // Main stimulus task
-  //------------------------------------------------
-  task main();
-
-    transaction tx;
-
-    $display("[GEN] Starting directed coverage sweep...");
-
-    // ---------- Directed sweep (guarantees functional coverage) ----------
-    for (int c = 0; c < 4; c++) begin
-      for (int op = 0; op <= 4'hD; op++) begin
-        for (int w = 0; w < 2; w++) begin
-
-          tx = new();
-
-          tx.core_id = c;
-          tx.opcode  = op;
-          tx.we      = w;
-          tx.read_en = ~w;
-
-          tx.addr = $urandom_range(0,2047);
-          tx.data = $urandom;
-
-          tx.display();
-
-          gen2driv.put(tx);
-        end
+      // =========================
+      // 1) RANDOM PHASE
+      // =========================
+      repeat (tx_count) begin
+         tx = new();
+         void'(tx.randomize());
+         gen2driv.put(tx);
       end
-    end
 
-    $display("[GEN] Directed sweep completed.");
+      // =========================
+      // 2) DIRECTED COVERAGE CLOSURE
+      // Missing cross bins:
+      // <cores[0], logical[11]>  opcode 1011
+      // <cores[2], memory[8]>    opcode 1000
+      // <cores[2], memory[6]>    opcode 0110
+      // <cores[0], ALU[3]>       opcode 0011
+      // <cores[0], ALU[2]>       opcode 0010
+      // =========================
 
-    // ---------- Random closure phase (improves code coverage) ----------
-    $display("[GEN] Starting random closure phase...");
-
-    repeat (200) begin
+      // core0 + ALU[2]
       tx = new();
-
-      assert(tx.randomize() with {
-        addr inside {[0:10], [2037:2047]}; // edge bias
-      });
-
-      tx.display();
-
+      void'(tx.randomize() with { core_id == 0; opcode == 4'b0010; });
       gen2driv.put(tx);
-    end
 
-    $display("[GEN] Random phase completed.");
+      // core0 + ALU[3]
+      tx = new();
+      void'(tx.randomize() with { core_id == 0; opcode == 4'b0011; });
+      gen2driv.put(tx);
 
-    -> ended;
+      // core2 + memory[6]
+      tx = new();
+      void'(tx.randomize() with { core_id == 2; opcode == 4'b0110; });
+      gen2driv.put(tx);
 
-  endtask
+      // core2 + memory[8]
+      tx = new();
+      void'(tx.randomize() with { core_id == 2; opcode == 4'b1000; });
+      gen2driv.put(tx);
+
+      // core0 + logical[11]
+      tx = new();
+      void'(tx.randomize() with { core_id == 0; opcode == 4'b1011; });
+      gen2driv.put(tx);
+
+      // =========================
+      // 3) DONE
+      // =========================
+      -> ended;
+   endtask
 
 endclass
+
+`endif
+
