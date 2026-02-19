@@ -22,7 +22,7 @@ class monitor_in; // triggers on we or read_en (input-side activity)
       if (vif.mon_cb.we || vif.mon_cb.read_en) begin
       transaction tr = new(); // create only when capturing an input transaction
    // Copy input-side interface signals into the transaction; this converts signals into transactiona.
-        tr.core_id = vif.mon_cb.core_id
+        tr.core_id = vif.mon_cb.core_id;
 		tr.opcode  = vif.mon_cb.opcode;
 		tr.addr    = vif.mon_cb.addr;
         tr.data_in = vif.mon_cb.data_in;
