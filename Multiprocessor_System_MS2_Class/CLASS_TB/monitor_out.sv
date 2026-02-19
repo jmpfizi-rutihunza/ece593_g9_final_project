@@ -18,7 +18,7 @@ class monitor_out;
       forever begin
          tx = new();
 
-         // sample on monitor clocking block
+        
          @(vif.mon_cb);
 
          tx.data   = vif.mon_cb.data_out;   // <-- FIXED
