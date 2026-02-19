@@ -13,16 +13,20 @@ interface intf(input logic clk);
   logic reset_n;
   logic read_en;
   logic we;
-  logic [DATA_WIDTH-1:0] data_in;
+  //logic [DATA_WIDTH-1:0] data_in;
+  logic [DATA_WIDTH-1:0] A;           // Changed from data_in
+  logic [DATA_WIDTH-1:0] B;           // Added B
   logic [DATA_WIDTH-1:0] data_out;
   logic [ADDR_WIDTH-1:0] addr;
   logic rvalid;
+  logic [1:0]            core_id_out;
 
   // Multiprocessor signals
   logic [1:0] core_id;
   logic [3:0] opcode;
   logic req;
   logic gnt;
+  logic [31:0] burst_id;
 
   // Driver clocking block (TB drives DUT inputs)
   clocking drv_cb @(posedge clk);
@@ -33,7 +37,8 @@ interface intf(input logic clk);
     output read_en;
     output we;
     output addr;
-    output data_in;
+    //output data_in;
+    output A, B;
 
     output core_id;
     output opcode;
@@ -54,11 +59,13 @@ interface intf(input logic clk);
     input read_en;
     input we;
     input addr;
-    input data_in;
+    //input data_in;
+    input A, B;
 
     input core_id;
     input opcode;
     input req;
+    input core_id_out;
 
     // Observe DUT outputs
     input gnt;
