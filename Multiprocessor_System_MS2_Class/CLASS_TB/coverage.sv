@@ -4,7 +4,6 @@
 //  Milestone2 - Functional Coverage             //
 //////////////////////////////////////////////////
 
-`include "transaction.sv"
 
 class coverage;
 
