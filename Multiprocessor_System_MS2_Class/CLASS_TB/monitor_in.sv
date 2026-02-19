@@ -25,13 +25,13 @@ class monitor_in; // triggers on we or read_en (input-side activity)
         tr.core_id = vif.mon_cb.core_id;
 		tr.opcode  = vif.mon_cb.opcode;
 		tr.addr    = vif.mon_cb.addr;
-        tr.data_in = vif.mon_cb.data_in;
+        tr.data    = vif.mon_cb.data_in;
         tr.we     = vif.mon_cb.we;
         tr.read_en = vif.mon_cb.read_en;
         tr.reset_n = vif.mon_cb.reset_n;
 
-        $display("[moniot_in] addr=%0d we=%0b read_en=%0b data_in=%0h reset_n=%0b",
-        tr.addr, tr.we, tr.read_en, tr.data_in, tr.reset_n);
+        $display("[iMon] core=%0d op=%0h addr=%0d we=%0b read_en=%0b data_in=%0h",
+         tr.core_id, tr.opcode, tr.addr, tr.we, tr.read_en, tr.data);
 
         mbox.put(tr); //Send the captured request transaction to the scoreboard.
       end
