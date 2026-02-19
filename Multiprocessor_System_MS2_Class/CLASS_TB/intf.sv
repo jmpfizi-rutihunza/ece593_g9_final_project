@@ -1,60 +1,73 @@
 //////////////////////////////////////////////////
-//	ECE-593 Project				//
-//	Multiprocessor System			//
-//	Milestone2 - class based verification	//
-//	Prepared by Janvier Mpfizi Rutihunza		//
+//  ECE-593 Project                              //
+//  Multiprocessor System                        //
+//  Milestone2 - class based verification        //
+//  Prepared by Janvier Mpfizi Rutihunza         //
 //////////////////////////////////////////////////
+
 interface intf(input logic clk);
   parameter ADDR_WIDTH = 11;
   parameter DATA_WIDTH = 8;
+
+  // DUT control/data
   logic reset_n;
   logic read_en;
+  logic we;
   logic [DATA_WIDTH-1:0] data_in;
   logic [DATA_WIDTH-1:0] data_out;
   logic [ADDR_WIDTH-1:0] addr;
-  logic we;
   logic rvalid;
-  
-  	logic [1:0] core_id;
-	logic [3:0] opcode;
-	logic req;
-	logic gnt;
+
+  // Multiprocessor signals
+  logic [1:0] core_id;
+  logic [3:0] opcode;
+  logic req;
+  logic gnt;
 
   // Driver clocking block (TB drives DUT inputs)
   clocking drv_cb @(posedge clk);
     default input #1step output #1step;
-    output data_in;
-    output addr;
-    output we;
-    output read_en;
+
+    // TB -> DUT (outputs from TB POV)
     output reset_n;
+    output read_en;
+    output we;
+    output addr;
+    output data_in;
+
+    output core_id;
+    output opcode;
+    output req;
+
+    // DUT -> TB (inputs from TB POV)
+    input  gnt;
     input  data_out;
     input  rvalid;
   endclocking
 
-  // this Clocking Block will be used by the MONITOR to observe activity in a race-free way.
-  // Monitor samples both DUT inputs and DUT outputs
+  // Monitor clocking block (TB observes activity)
   clocking mon_cb @(posedge clk);
-    default input #1step; // add a small delay between clocks
-    input data_in;
-    input addr;
-    input we;;
-    input read_en;
+    default input #1step;
+
+    // Observe DUT inputs
     input reset_n;
+    input read_en;
+    input we;
+    input addr;
+    input data_in;
+
+    input core_id;
+    input opcode;
+    input req;
+
+    // Observe DUT outputs
+    input gnt;
     input data_out;
     input rvalid;
   endclocking
-  
-  /*organize access to an interface, preventing components from accidentally driving or reading the wrong signals.
-  Modports restrict what a component can access, so:
-  the driver only sees drv_cb
- the monitor only sees mon_cb */
- 
-	modport drv (clocking drv_cb);
-	modport mon (clocking mon_cb);
+
+  // Modports
+  modport drv (clocking drv_cb);
+  modport mon (clocking mon_cb);
 
 endinterface
-
-
-
-
