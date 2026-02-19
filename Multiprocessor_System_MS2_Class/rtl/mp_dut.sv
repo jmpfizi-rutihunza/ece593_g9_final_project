@@ -1,99 +1,91 @@
-////////////////////////////////////////////////////////////
-// mp_dut.sv
-// Milestone-2 DUT extracted from M1 "mp_top" concept:
-// - NO internal generators
-// - Exposes a simple request interface for class-based TB
-// - Shared memory model (2^AW locations, DW bits wide)
-// - One-cycle response: rvalid asserted 1 cycle after accepted req
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//	ECE-593 Project				//
+//	Multiprocessor System			//
+//	Milestone2 - class based verification	//
+//	Prepared by Frezewd Debebe		//
+//////////////////////////////////////////////////
+
 
 module mp_dut #(
-  parameter int AW = 11,
-  parameter int DW = 8
+    	parameter AW = 11,    //address width
+    	parameter DW = 8      //data width
 )(
-  input  logic            clk,
-  input  logic            rst_n,
-
-  // Request channel (from TB/driver)
-  input  logic [1:0]      core_id,     // kept for coverage/trace; not required for function here
-  input  logic [3:0]      opcode,      // kept for coverage/trace; not required for function here
-  input  logic            req,
-  output logic            gnt,
-  input  logic            we,          // 1=write, 0=read
-  input  logic [AW-1:0]   addr,
-  input  logic [DW-1:0]   data_in,
-
-  // Response channel (to TB/monitors)
-  output logic            rvalid,
-  output logic [DW-1:0]   data_out,
-
-  // Optional transaction tag for debug/trace (TB can drive it)
-  input  logic [31:0]     burst_id
+    	input  logic        clk,
+    	input  logic        rst_n,
+    
+    	// Request signals
+    	input  logic [1:0]  core_id,  // core 0, 1, 2, 3
+    	input  logic [3:0]  opcode,   // ADD, SUB, LOAD, STORE, Special function
+    	input  logic        req,      // Request valid
+    	input  logic [AW-1:0] addr,   // Memory address
+    	input  logic [DW-1:0] A,      // Operand A
+    	input  logic [DW-1:0] B,      // Operand B
+    	input  logic        we,       // Write Enable
+    
+    	output logic        gnt,      // Grant 
+    
+    	// Response signals
+    	output logic        rvalid,     // Data is ready
+    	output logic [DW-1:0] data_out, // Result (ALU or Memory)
+    	output logic [1:0]  core_id_out // Tagging the result for the scoreboard
 );
 
-  // Simple shared memory
-  logic [DW-1:0] mem [0:(1<<AW)-1];
+    	// Internal Memory
+    	logic [DW-1:0] mem [0:(1<<AW)-1];
 
-  // Pipeline registers for 1-cycle response
-  logic          pend_valid;
-  logic          pend_we;
-  logic [AW-1:0] pend_addr;
-  logic [DW-1:0] pend_wdata;
+    	// Pipeline Registers 
+    	logic [1:0]  p_core;
+    	logic [3:0]  p_op;
+    	logic [DW-1:0] p_res;
+    	logic        p_valid;
 
-  // Always grant when req is high (single-request interface)
-  // If you later support multi-core simultaneous requests, this becomes arbitration logic.
-  always_comb begin
-    gnt = req;
-  end
+    	// Arbiter 
+    	assign gnt = req; 
 
-  // Sequential behavior
-  integer i;
-  always_ff @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-      rvalid     <= 1'b0;
-      data_out   <= '0;
+   	 // ALU Logic & Memory Access
+    	always_ff @(posedge clk or negedge rst_n) begin
+        	if (!rst_n) begin
+            		p_valid     <= 1'b0;
+            		data_out    <= '0;
+            		rvalid      <= 1'b0;
+            		core_id_out <= '0;
+            		// Clear memory on reset
+            		for (int i=0; i<(1<<AW); i++) mem[i] <= '0;
+        	end else begin
+            		// Clear valid signal
+           		 p_valid <= 1'b0;
 
-      pend_valid <= 1'b0;
-      pend_we    <= 1'b0;
-      pend_addr  <= '0;
-      pend_wdata <= '0;
+            		if (req && gnt) begin
+                		p_valid <= 1'b1;
+               			p_core  <= core_id;
+               			p_op    <= opcode;
 
-      // Optional: clear memory (not required, but avoids Xs in sim)
-      for (i = 0; i < (1<<AW); i++) begin
-        mem[i] <= '0;
-      end
-    end
-    else begin
-      // Default response low unless a pending transaction completes
-      rvalid <= 1'b0;
+                	case (opcode)
+                    		4'b0001: p_res <= A + B;          // ALU ADD
+                    		4'b0011: p_res <= A - B;          // ALU SUB
+				4'b0100: p_res <= A * B;          // Multiply A and B
+                    		4'b0101: p_res <= mem[addr];      // MEM LOAD
+                    		4'b0110: begin                    // MEM STORE
+                        		mem[addr] <= A; 
+                        		p_res     <= A; 
+                    			end
+                    		4'b0010: p_res <= A & B;          // LOGIC AND
+                    		4'b0111: p_res <= A >> 1;         // SHIFT RIGHT
+				4'b1000: p_res <= A << 1;         // SHIFT LEFT
+				4'b1001: p_res <= (A * B) - A;    // Special function
+				4'b1010: p_res <= (A * 4 * B) - A;// Special function
+				4'b1011: p_res <= (A * B) + A;    // Special function
+				4'b1100: p_res <= (A * 3);        // Special function
+				4'b1101: p_res <= (A * B) + B;    // Special function
+                    		default: p_res <= '0;
+                	endcase
+            	end
 
-      // Complete last cycle's accepted request
-      if (pend_valid) begin
-        if (pend_we) begin
-          // For write, return the written data (simple ack)
-          data_out <= pend_wdata;
-        end
-        else begin
-          // For read, return memory content
-          data_out <= mem[pend_addr];
-        end
-        rvalid <= 1'b1;
-      end
-
-      // Capture new request (if granted)
-      pend_valid <= 1'b0;
-      if (req && gnt) begin
-        pend_valid <= 1'b1;
-        pend_we    <= we;
-        pend_addr  <= addr;
-        pend_wdata <= data_in;
-
-        // Write happens on accept (common simple bus behavior)
-        if (we) begin
-          mem[addr] <= data_in;
-        end
-      end
-    end
-  end
+            	// Pipeline Output (Results appear 1 cycle after request)
+            	rvalid      <= p_valid;
+            	data_out    <= p_res;
+            	core_id_out <= p_core;
+        	end
+    	end
 
 endmodule
