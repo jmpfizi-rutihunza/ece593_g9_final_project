@@ -41,6 +41,7 @@ class transaction;
 	// Deep copy function
   	function transaction copy();
     		copy = new();
+			copy.burst_id = this.burst_id;
     		copy.core_id = this.core_id;
     		copy.opcode  = this.opcode;
     		copy.addr    = this.addr;
@@ -57,3 +58,4 @@ class transaction;
   	endfunction
 
 endclass
+
