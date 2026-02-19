@@ -1,19 +1,4 @@
-////////////////////////////////////////////////////////////
-// tb_top.sv
-// Top-level testbench
-////////////////////////////////////////////////////////////
-
 `timescale 1ns/1ps
-
-`include "intf.sv"
-`include "transaction.sv"
-`include "generator.sv"
-`include "driver.sv"
-`include "monitor_in.sv"
-`include "monitor_out.sv"
-`include "scoreboard.sv"
-`include "coverage.sv"
-`include "environment.sv"
 
 module tb_top;
 
@@ -34,17 +19,35 @@ module tb_top;
   // interface instance
   intf vif(clk);
 
-  // connect reset
-  assign vif.reset_n = rst_n;
-  
+  // connect reset + burst tag
+  assign vif.reset_n  = rst_n;
+  assign vif.burst_id = 32'd0;   // driver can override if you want
+
+  // REAL DUT instance
+  mp_dut #(.AW(11), .DW(8)) dut (
+    .clk      (clk),
+    .rst_n    (vif.reset_n),
+
+    .core_id  (vif.core_id),
+    .opcode   (vif.opcode),
+    .req      (vif.req),
+    .gnt      (vif.gnt),
+    .we       (vif.we),
+    .addr     (vif.addr),
+    .data_in  (vif.data_in),
+
+    .rvalid   (vif.rvalid),
+    .data_out (vif.data_out),
+
+    .burst_id (vif.burst_id)
+  );
+
   environment env;
 
   initial begin
     env = new(vif);
     env.gen.tx_count = 20;   // required 15–20 transactions
     env.run();
-    #100;
-    $finish;
   end
 
 endmodule
