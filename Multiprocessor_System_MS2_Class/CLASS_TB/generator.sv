@@ -7,7 +7,6 @@
 
 class generator;
 
-  transaction tx;
   mailbox #(transaction) gen2driv;
   int tx_count;
 
@@ -55,3 +54,4 @@ class generator;
   -> ended;
 
 endtask
+
