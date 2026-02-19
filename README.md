@@ -1,61 +1,66 @@
-# ECE-593 Milestone 1
+ECE-593 — Pre-Silicon Validation Project
 
-## Project
+This repository contains milestone-based development of a multiprocessor system verification project for:
 
-Multiprocessor System
+ECE-593: Fundamentals of Pre-Silicon Validation  
+Maseeh College of Engineering and Computer Science  
+Portland State University
 
-## Course
+----------------------------------------------------
 
-ECE-593: Fundamentals of Pre-Silicon Validation
-Maseeh College of Engineering and Computer Science
-Winter 2025
+Project Structure
 
-## Instructor
+Each milestone is organized into its own directory following the required course structure.
 
-Prof. Venkatesh Patil
+Milestones:
 
-## Team Members
+- MS1 — Traditional Verification
+- MS2 — Class-Based Verification
+- MS3 — Advanced Class Verification
+- MS4 — UVM Environment
+- MS5 — Advanced UVM
+- FINAL — Integrated Project
 
-* Janvier Mpfizi Rutihunza
-* Frezewd Debebe
-* Sal Esmaeil
+----------------------------------------------------
 
-## Milestone Objective
+Milestone-2 (Class Based Verification)
 
-Milestone 1 focuses on early pre-silicon validation using a traditional (conventional) testbench.
-The goal of this milestone is to validate:
+Milestone-2 implements a complete class-based verification environment including:
 
-* Basic RTL functionality
-* Arbitration correctness
-* Shared bus behavior
-* Memory read/write dataflow
+- Transaction modeling
+- Generator / Driver architecture
+- Input and Output monitors
+- Scoreboard checking
+- Functional coverage
+- Code coverage
+- Environment-based execution
 
-Generator-based processors are used instead of full instruction-level CPU cores to simplify early system-level validation.
+Folder structure:
 
-## Directory Structure
+project_name_MS2_Class/
+    rtl/
+    CLASS_TB/
+    doc/
 
-```
-Multiprocessor_System_MS1_Trad/
-├── README.md
-├── doc/
-│   ├── README.md
-│   └── ECE_593__Pre_Silicon_Validation.pdf
-├── rtl/
-│   ├── README.md
-│   ├── generator.sv
-│   └── mp_top.sv
-└── TRAD_TB/
-    ├── README.md
-    ├── mp_top_tb.sv
-    └── run.do
-```
+----------------------------------------------------
 
-## How to Run Simulation
+Simulation (Milestone-2)
 
-1. Launch QuestaSim
-2. Navigate to the testbench directory:
-   cd Multiprocessor_System_MS1_Trad/TRAD_TB
-3. Run the simulation:
-   do run.do
+Run from MS2 root:
+
+vdel -lib work -all  
+vlib work  
+vlog -sv -mfcu -cover bcesf rtl/mp_dut.sv CLASS_TB/*.sv  
+vsim -coverage work.tb_top  
+run -all
+
+----------------------------------------------------
+
+Authors
 
 
+----------------------------------------------------
+
+Notes
+
+This repository follows the required ECE-593 project directory structure and contains all verification artifacts, documentation, and coverage reports for each milestone.
