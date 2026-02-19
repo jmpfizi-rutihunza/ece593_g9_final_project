@@ -9,24 +9,32 @@ class monitor_out; // Triggers on rvalid
   mailbox #(transaction) mbox;   // sends response transactions to scoreboard
 
   function new(virtual intf.mon vif, mailbox #(transaction) mbox);
-    this.vif  = vif; //Receives the interface handle so the monitor can observe DUT pins
-    this.mbox = mbox; //Receives the mailbox handle so the monitor can send transactions to the scoreboard
+    this.vif  = vif;
+    this.mbox = mbox;
   endfunction
 
   task run();
     forever begin
-      @(vif.mon_cb); //wait for sampling point (posedge clk + #1step) so signals are sampled just after the clock edge to avoid race conditions.
+      @(vif.mon_cb);
 
+      // Capture only when DUT output is valid
+      if (vif.mon_cb.rvalid) begin
+        transaction tr = new();
 
-      if (vif.mon_cb.rvalid) begin //      // Capture only when DUT output is valid
-        transaction tr = new();  // new snapshot each time
-// Copy output-side interface signals into the transaction; this converts signals into transactiona.
+        // Capture ID/context + actual output
         tr.core_id = vif.mon_cb.core_id;
-        tr.data_out  = vif.mon_cb.data_out;
-        tr.rvalid = vif.mon_cb.rvalid;
-        $display("[moniot_out] data_out=%0h rvalid=%0b",tr.data_out, tr.rvalid);
-        mbox.put(tr); // Send the captured transaction to the scoreboard via mailbox.
+        tr.opcode  = vif.mon_cb.opcode;
+        tr.addr    = vif.mon_cb.addr;
+
+        // Put DUT output into the same field the scoreboard checks
+        tr.data    = vif.mon_cb.data_out;
+
+        $display("[oMon] core=%0d op=%0h addr=%0d data_out=%0h rvalid=%0b",
+                 tr.core_id, tr.opcode, tr.addr, tr.data, vif.mon_cb.rvalid);
+
+        mbox.put(tr);
       end
     end
   endtask
+
 endclass
