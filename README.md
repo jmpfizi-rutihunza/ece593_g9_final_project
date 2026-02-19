@@ -58,9 +58,13 @@ run -all
 
 Authors
 
+Janvier Mpfizi Rutihunza
+Frezewd Debebe
+Sal Esmaeil
 
 ----------------------------------------------------
 
 Notes
 
 This repository follows the required ECE-593 project directory structure and contains all verification artifacts, documentation, and coverage reports for each milestone.
+
