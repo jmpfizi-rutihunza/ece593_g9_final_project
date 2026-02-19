@@ -7,9 +7,13 @@
 
 class generator;
 
+  // Mailbox to driver
   mailbox #(transaction) gen2driv;
+
+  // Optional legacy count (not used now but kept)
   int tx_count;
 
+  // End event
   event ended;
 
   static int id = 0;
@@ -19,43 +23,58 @@ class generator;
     this.tx_count = tx_count;
   endfunction
 
+  //------------------------------------------------
+  // Main stimulus task
+  //------------------------------------------------
   task main();
 
-  transaction tx;
+    transaction tx;
 
-// ---------- Directed sweep ----------
-for (int c = 0; c < 4; c++) begin
-  for (int op = 0; op <= 4'hD; op++) begin
-    for (int w = 0; w < 2; w++) begin
+    $display("[GEN] Starting directed coverage sweep...");
+
+    // ---------- Directed sweep (guarantees functional coverage) ----------
+    for (int c = 0; c < 4; c++) begin
+      for (int op = 0; op <= 4'hD; op++) begin
+        for (int w = 0; w < 2; w++) begin
+
+          tx = new();
+
+          tx.core_id = c;
+          tx.opcode  = op;
+          tx.we      = w;
+          tx.read_en = ~w;
+
+          tx.addr = $urandom_range(0,2047);
+          tx.data = $urandom;
+
+          tx.display();
+
+          gen2driv.put(tx);
+        end
+      end
+    end
+
+    $display("[GEN] Directed sweep completed.");
+
+    // ---------- Random closure phase (improves code coverage) ----------
+    $display("[GEN] Starting random closure phase...");
+
+    repeat (200) begin
       tx = new();
 
-      tx.core_id = c;
-      tx.opcode  = op;
-      tx.we      = w;
-      tx.read_en = ~w;
+      assert(tx.randomize() with {
+        addr inside {[0:10], [2037:2047]}; // edge bias
+      });
 
-      tx.addr = $urandom_range(0,2047);
-      tx.data = $urandom;
+      tx.display();
 
       gen2driv.put(tx);
     end
-  end
-end
 
-// ⭐ PUT IT HERE (random closure phase)
-repeat (200) begin
-  tx = new();
+    $display("[GEN] Random phase completed.");
 
-  assert(tx.randomize() with {
-    addr inside {[0:10], [2037:2047]};
-  });
+    -> ended;
 
-  gen2driv.put(tx);
-end
+  endtask
 
--> ended;
-
-
-endtask
-
-
+endclass
