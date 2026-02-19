@@ -21,7 +21,7 @@ module tb_top;
 
   // connect reset + burst tag
   assign vif.reset_n  = rst_n;
-  assign vif.burst_id = 32'd0;   // driver can override if you want
+  
 
   // REAL DUT instance
   mp_dut #(.AW(11), .DW(8)) dut (
