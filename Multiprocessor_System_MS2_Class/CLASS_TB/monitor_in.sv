@@ -1,41 +1,51 @@
-//////////////////////////////////////////////////
-//	ECE-593 Project				//
-//	Multiprocessor System			//
-//	Milestone2 - class based verification	//
-//	Prepared by Janvier Mpfizi Rutihunza		//
-//////////////////////////////////////////////////
-class monitor_in; // triggers on we or read_en (input-side activity)
-  virtual intf.mon vif;
-  mailbox #(transaction) mbox; // The monitor puts transactions in this mailbox; the scoreboard reads them out.
+`ifndef MONITOR_IN_SV
+`define MONITOR_IN_SV
 
-  function new(virtual intf.mon vif, mailbox #(transaction) mbox);
-    this.vif  = vif; //Receives the interface handle so the monitor can observe DUT pins
-    this.mbox = mbox; //Receives the mailbox handle so the monitor can send transactions to the scoreboard
-  endfunction
+class monitor_in;
 
-  task run();
-    $display("monitor_in started");
-    forever begin
-      @(vif.mon_cb); // wait for sampling point (posedge clk + #1step) so signals are sampled just after the clock edge to avoid race conditions.  
+   virtual intf vif;
+   mailbox #(transaction) mon2sb;
+   coverage_collector cov;
 
-		// Trigger only when there is an input transaction: we=1 indicates a write request, read_en=1 indicates a read request
-      if (vif.mon_cb.we || vif.mon_cb.read_en) begin
-      transaction tr = new(); // create only when capturing an input transaction
-   // Copy input-side interface signals into the transaction; this converts signals into transactiona.
-        tr.core_id = vif.mon_cb.core_id;
-		tr.opcode  = vif.mon_cb.opcode;
-		tr.addr    = vif.mon_cb.addr;
-        tr.data    = vif.mon_cb.data_in;
-        tr.we     = vif.mon_cb.we;
-        tr.read_en = vif.mon_cb.read_en;
-        tr.reset_n = vif.mon_cb.reset_n;
+   function new(virtual intf vif,
+                mailbox #(transaction) mon2sb,
+                coverage_collector cov);
+      this.vif   = vif;
+      this.mon2sb = mon2sb;
+      this.cov   = cov;
+   endfunction
 
-        $display("[iMon] core=%0d op=%0h addr=%0d we=%0b read_en=%0b data_in=%0h",
-         tr.core_id, tr.opcode, tr.addr, tr.we, tr.read_en, tr.data);
 
-        mbox.put(tr); //Send the captured request transaction to the scoreboard.
+   task run();
+      transaction tx;
+
+      forever begin
+         // sample on monitor clocking block edge
+         @(vif.mon_cb);
+
+         // Only sample real requests (important for correct coverage)
+         if (vif.mon_cb.req) begin
+            tx = new();
+
+            // IMPORTANT: use core_id (the TB drives this)
+            // Do NOT use core_id_out unless your covergroup was built for it
+            tx.core_id = vif.mon_cb.core_id;
+            tx.opcode  = vif.mon_cb.opcode;
+            tx.addr    = vif.mon_cb.addr;
+
+            tx.A       = vif.mon_cb.A;
+            tx.B       = vif.mon_cb.B;
+
+            // sample functional coverage immediately after capture
+            cov.sample(tx);
+
+            // send to scoreboard
+            mon2sb.put(tx);
+         end
       end
-    end
-  endtask
+   endtask
 
 endclass
+
+`endif
+
