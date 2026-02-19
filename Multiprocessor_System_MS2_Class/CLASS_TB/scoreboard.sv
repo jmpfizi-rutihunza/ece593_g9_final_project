@@ -21,7 +21,6 @@ class scoreboard;
          mon_in2scb.get(in_tx);
          mon_out2scb.get(out_tx);
 
-         // compare (placeholder)
          if (out_tx.data !== in_tx.expected_val) begin
             $display("[SB] MISMATCH exp=%h got=%h",
                      in_tx.expected_val, out_tx.data);
@@ -32,4 +31,5 @@ class scoreboard;
 endclass
 
 `endif
+
 
