@@ -98,7 +98,7 @@ class mp_scoreboard extends uvm_component;
         `uvm_info("SCB","Match",UVM_LOW)
       end
 
-      // ⭐ Update reference memory on STORE
+      // Update reference memory on STORE
 
       if(act.opcode == 4'b0110) begin
         ref_mem[act.addr] = act.data_out;
