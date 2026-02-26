@@ -25,19 +25,20 @@ class mp_test extends uvm_test;
 
   // Run phase (starts stimulus)
 
-  task run_phase(uvm_phase phase);
+task run_phase(uvm_phase phase);
 
-    mp_sequence seq;
+  phase.raise_objection(this);
 
-    phase.raise_objection(this);
+  fork
+    predict_loop();
+    check_loop();
+  join_none
 
-    seq = mp_sequence::type_id::create("seq");
-    seq.start(env.agt.seqr);   // start sequence on agent sequencer
+  // allow simulation to run
+  wait(0);
 
-    #1000;   // simulation runtime (adjust later)
+  phase.drop_objection(this);
 
-    phase.drop_objection(this);
-
-  endtask
+endtask
 
 endclass
