@@ -1,0 +1,485 @@
+do run.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vmap 2025.2_1 Lib Mapping Utility 2025.06 Jun 25 2025
+# vmap work work 
+# ** Note: (vmap-220) '//thoth.cecs.pdx.edu/Home07/frezewd/Desktop/ECE-593 Projects/Project/MS2/Milestone2.mpf' is used as the ini file.
+# Modifying //thoth.cecs.pdx.edu/Home07/frezewd/Desktop/ECE-593 Projects/Project/MS2/Milestone2.mpf
+# QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
+# Start time: 21:36:37 on Feb 18,2026
+# vlog -reportprogress 300 -cover bcst ./intf.sv ./mp_dut.sv ./tb_top.sv 
+# ** Note: (vlog-220) '//thoth.cecs.pdx.edu/Home07/frezewd/Desktop/ECE-593 Projects/Project/MS2/Milestone2.mpf' is used as the ini file.
+# -- Compiling interface intf
+# -- Compiling module mp_dut
+# -- Compiling package tb_top_sv_unit
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 21:36:37 on Feb 18,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vopt 2025.2_1 Compiler 2025.06 Jun 25 2025
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# Start time: 21:36:38 on Feb 18,2026
+# vopt -reportprogress 300 tb_top -o top_opt "+acc" -cover sbc 
+# ** Note: (vopt-220) '//thoth.cecs.pdx.edu/Home07/frezewd/Desktop/ECE-593 Projects/Project/MS2/Milestone2.mpf' is used as the ini file.
+# 
+# Top level modules:
+# 	tb_top
+# 
+# Analyzing design...
+# -- Loading module tb_top
+# -- Loading interface intf
+# -- Loading module mp_dut
+# Incremental compilation check found no design-units have changed.
+# Optimized design name is top_opt
+# End time: 21:36:39 on Feb 18,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# ** Note: (vsim-220) '//thoth.cecs.pdx.edu/Home07/frezewd/Desktop/ECE-593 Projects/Project/MS2/Milestone2.mpf' is used as the ini file.
+# vsim top_opt -coverage 
+# Start time: 21:36:40 on Feb 18,2026
+# Loading sv_std.std
+# Loading work.tb_top_sv_unit(fast)
+# Loading work.tb_top(fast)
+# Loading work.intf(fast__2)
+# Loading work.mp_dut(fast)
+# Loading work.intf(fast)
+# [ENV] Resetting
+# [DRV] Reset started
+# [DRV] Reset completed
+# [ENV] Starting Test Execution...
+# Generator started
+# monitor_in started
+# [iMon] core=2 op=8 addr=4 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 75000
+# [oMon] core=2 op=8 addr=4 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 8 | Data: 00
+# [iMon] core=0 op=2 addr=321 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 105000
+# [oMon] core=0 op=2 addr=321 data_out=0 rvalid=1
+# [SCB PASS] Core 0 | Op: 2 | Data: 00
+# [iMon] core=2 op=7 addr=443 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 135000
+# [oMon] core=2 op=7 addr=443 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 7 | Data: 00
+# [iMon] core=1 op=b addr=1452 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 165000
+# [oMon] core=1 op=b addr=1452 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: b | Data: 00
+# [iMon] core=2 op=9 addr=508 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 195000
+# [oMon] core=2 op=9 addr=508 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 9 | Data: 00
+# [iMon] core=2 op=d addr=1106 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 225000
+# [oMon] core=2 op=d addr=1106 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: d | Data: 00
+# [iMon] core=1 op=8 addr=1195 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 255000
+# [oMon] core=1 op=8 addr=1195 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: 8 | Data: 00
+# [iMon] core=3 op=7 addr=1019 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 285000
+# [oMon] core=3 op=7 addr=1019 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 7 | Data: 00
+# [iMon] core=1 op=2 addr=546 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 315000
+# [oMon] core=1 op=2 addr=546 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: 2 | Data: 00
+# [iMon] core=2 op=8 addr=910 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 345000
+# [oMon] core=2 op=8 addr=910 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 8 | Data: 00
+# [iMon] core=3 op=a addr=958 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 375000
+# [oMon] core=3 op=a addr=958 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: a | Data: 00
+# [iMon] core=2 op=3 addr=489 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 405000
+# [oMon] core=2 op=3 addr=489 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 3 | Data: 00
+# [iMon] core=2 op=c addr=874 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 435000
+# [oMon] core=2 op=c addr=874 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: c | Data: 00
+# [iMon] core=2 op=2 addr=806 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 465000
+# [oMon] core=2 op=2 addr=806 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 2 | Data: 00
+# [iMon] core=0 op=d addr=819 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 495000
+# [oMon] core=0 op=d addr=819 data_out=0 rvalid=1
+# [SCB PASS] Core 0 | Op: d | Data: 00
+# [iMon] core=3 op=1 addr=207 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 525000
+# [oMon] core=3 op=1 addr=207 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 1 | Data: 00
+# [iMon] core=0 op=1 addr=934 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 555000
+# [oMon] core=0 op=1 addr=934 data_out=0 rvalid=1
+# [SCB PASS] Core 0 | Op: 1 | Data: 00
+# [iMon] core=1 op=8 addr=133 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 585000
+# [oMon] core=1 op=8 addr=133 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: 8 | Data: 00
+# [iMon] core=2 op=a addr=210 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 615000
+# [oMon] core=2 op=a addr=210 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: a | Data: 00
+# [iMon] core=2 op=1 addr=1748 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 645000
+# [oMon] core=2 op=1 addr=1748 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 1 | Data: 00
+# [iMon] core=1 op=b addr=1693 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 675000
+# [oMon] core=1 op=b addr=1693 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: b | Data: 00
+# [iMon] core=0 op=5 addr=1983 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 705000
+# [oMon] core=0 op=5 addr=1983 data_out=0 rvalid=1
+# [SCB PASS] Core 0 | Op: 5 | Data: 00
+# [iMon] core=3 op=c addr=642 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 735000
+# [oMon] core=3 op=c addr=642 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: c | Data: 00
+# [iMon] core=0 op=0 addr=1281 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 765000
+# [oMon] core=0 op=0 addr=1281 data_out=0 rvalid=1
+# [SCB PASS] Core 0 | Op: 0 | Data: 00
+# [iMon] core=2 op=9 addr=834 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 795000
+# [oMon] core=2 op=9 addr=834 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 9 | Data: 00
+# [iMon] core=2 op=a addr=1599 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 825000
+# [oMon] core=2 op=a addr=1599 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: a | Data: 00
+# [iMon] core=2 op=a addr=343 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 855000
+# [oMon] core=2 op=a addr=343 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: a | Data: 00
+# [iMon] core=3 op=d addr=295 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 885000
+# [oMon] core=3 op=d addr=295 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: d | Data: 00
+# [iMon] core=1 op=c addr=1918 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 915000
+# [oMon] core=1 op=c addr=1918 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: c | Data: 00
+# [iMon] core=3 op=c addr=1974 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 945000
+# [oMon] core=3 op=c addr=1974 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: c | Data: 00
+# [iMon] core=2 op=d addr=1845 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 975000
+# [oMon] core=2 op=d addr=1845 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: d | Data: 00
+# [iMon] core=3 op=3 addr=874 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1005000
+# [oMon] core=3 op=3 addr=874 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 3 | Data: 00
+# [iMon] core=2 op=a addr=1648 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1035000
+# [oMon] core=2 op=a addr=1648 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: a | Data: 00
+# [iMon] core=2 op=4 addr=860 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=00 B=00 | Product=00 | Exp_Stored=00
+# [DRV] Finished Core 2 transaction at 1065000
+# [oMon] core=2 op=4 addr=860 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 4 | Data: 00
+# [iMon] core=2 op=6 addr=1749 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1095000
+# [oMon] core=2 op=6 addr=1749 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 6 | Data: 00
+# [iMon] core=1 op=0 addr=890 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 1125000
+# [oMon] core=1 op=0 addr=890 data_out=0 rvalid=1
+# [SCB PASS] Core 1 | Op: 0 | Data: 00
+# [iMon] core=0 op=c addr=1546 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1155000
+# [oMon] core=0 op=c addr=1546 data_out=d1 rvalid=1
+# [SCB PASS] Core 0 | Op: c | Data: d1
+# [iMon] core=3 op=8 addr=1562 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1185000
+# [oMon] core=3 op=8 addr=1562 data_out=36 rvalid=1
+# [SCB PASS] Core 3 | Op: 8 | Data: 36
+# [iMon] core=2 op=2 addr=1714 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1215000
+# [oMon] core=2 op=2 addr=1714 data_out=88 rvalid=1
+# [SCB PASS] Core 2 | Op: 2 | Data: 88
+# [iMon] core=1 op=6 addr=1673 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 1245000
+# [oMon] core=1 op=6 addr=1673 data_out=9b rvalid=1
+# [SCB PASS] Core 1 | Op: 6 | Data: 9b
+# [iMon] core=2 op=1 addr=163 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1275000
+# [oMon] core=2 op=1 addr=163 data_out=17 rvalid=1
+# [SCB PASS] Core 2 | Op: 1 | Data: 17
+# [iMon] core=3 op=5 addr=1884 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1305000
+# [oMon] core=3 op=5 addr=1884 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 5 | Data: 00
+# [iMon] core=2 op=7 addr=217 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1335000
+# [oMon] core=2 op=7 addr=217 data_out=67 rvalid=1
+# [SCB PASS] Core 2 | Op: 7 | Data: 67
+# [iMon] core=2 op=d addr=1101 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1365000
+# [oMon] core=2 op=d addr=1101 data_out=7 rvalid=1
+# [SCB PASS] Core 2 | Op: d | Data: 07
+# [iMon] core=0 op=b addr=1514 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1395000
+# [oMon] core=0 op=b addr=1514 data_out=8c rvalid=1
+# [SCB PASS] Core 0 | Op: b | Data: 8c
+# [iMon] core=1 op=c addr=1206 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 1425000
+# [oMon] core=1 op=c addr=1206 data_out=6a rvalid=1
+# [SCB PASS] Core 1 | Op: c | Data: 6a
+# [iMon] core=0 op=7 addr=184 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1455000
+# [oMon] core=0 op=7 addr=184 data_out=67 rvalid=1
+# [SCB PASS] Core 0 | Op: 7 | Data: 67
+# [iMon] core=2 op=8 addr=757 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1485000
+# [oMon] core=2 op=8 addr=757 data_out=9c rvalid=1
+# [SCB PASS] Core 2 | Op: 8 | Data: 9c
+# [iMon] core=3 op=a addr=1794 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1515000
+# [oMon] core=3 op=a addr=1794 data_out=2a rvalid=1
+# [SCB PASS] Core 3 | Op: a | Data: 2a
+# [iMon] core=0 op=a addr=1789 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1545000
+# [oMon] core=0 op=a addr=1789 data_out=2a rvalid=1
+# [SCB PASS] Core 0 | Op: a | Data: 2a
+# [iMon] core=3 op=c addr=1566 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1575000
+# [oMon] core=3 op=c addr=1566 data_out=6a rvalid=1
+# [SCB PASS] Core 3 | Op: c | Data: 6a
+# [iMon] core=2 op=9 addr=1423 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1605000
+# [oMon] core=2 op=9 addr=1423 data_out=f0 rvalid=1
+# [SCB PASS] Core 2 | Op: 9 | Data: f0
+# [iMon] core=0 op=9 addr=1393 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1635000
+# [oMon] core=0 op=9 addr=1393 data_out=f0 rvalid=1
+# [SCB PASS] Core 0 | Op: 9 | Data: f0
+# [iMon] core=1 op=7 addr=740 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 1665000
+# [oMon] core=1 op=7 addr=740 data_out=67 rvalid=1
+# [SCB PASS] Core 1 | Op: 7 | Data: 67
+# [iMon] core=0 op=8 addr=823 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1695000
+# [oMon] core=0 op=8 addr=823 data_out=9c rvalid=1
+# [SCB PASS] Core 0 | Op: 8 | Data: 9c
+# [iMon] core=3 op=3 addr=589 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1725000
+# [oMon] core=3 op=3 addr=589 data_out=85 rvalid=1
+# [SCB PASS] Core 3 | Op: 3 | Data: 85
+# [iMon] core=2 op=a addr=624 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1755000
+# [oMon] core=2 op=a addr=624 data_out=2a rvalid=1
+# [SCB PASS] Core 2 | Op: a | Data: 2a
+# [iMon] core=1 op=a addr=693 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 1785000
+# [oMon] core=1 op=a addr=693 data_out=2a rvalid=1
+# [SCB PASS] Core 1 | Op: a | Data: 2a
+# [iMon] core=3 op=5 addr=63 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1815000
+# [oMon] core=3 op=5 addr=63 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 5 | Data: 00
+# [iMon] core=2 op=8 addr=1822 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 1845000
+# [oMon] core=2 op=8 addr=1822 data_out=9c rvalid=1
+# [SCB PASS] Core 2 | Op: 8 | Data: 9c
+# [iMon] core=3 op=0 addr=507 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1875000
+# [oMon] core=3 op=0 addr=507 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 0 | Data: 00
+# [iMon] core=3 op=5 addr=657 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 1905000
+# [oMon] core=3 op=5 addr=657 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 5 | Data: 00
+# [iMon] core=0 op=4 addr=1494 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=ce B=49 | Product=be | Exp_Stored=be
+# [DRV] Finished Core 0 transaction at 1935000
+# [oMon] core=0 op=4 addr=1494 data_out=be rvalid=1
+# [SCB PASS] Core 0 | Op: 4 | Data: be
+# [iMon] core=0 op=1 addr=1909 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 1965000
+# [oMon] core=0 op=1 addr=1909 data_out=17 rvalid=1
+# [SCB PASS] Core 0 | Op: 1 | Data: 17
+# [iMon] core=0 op=4 addr=365 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=ce B=49 | Product=be | Exp_Stored=be
+# [DRV] Finished Core 0 transaction at 1995000
+# [oMon] core=0 op=4 addr=365 data_out=be rvalid=1
+# [SCB PASS] Core 0 | Op: 4 | Data: be
+# [iMon] core=0 op=7 addr=1053 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 2025000
+# [oMon] core=0 op=7 addr=1053 data_out=67 rvalid=1
+# [SCB PASS] Core 0 | Op: 7 | Data: 67
+# [iMon] core=3 op=1 addr=320 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2055000
+# [oMon] core=3 op=1 addr=320 data_out=17 rvalid=1
+# [SCB PASS] Core 3 | Op: 1 | Data: 17
+# [iMon] core=0 op=a addr=1694 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 2085000
+# [oMon] core=0 op=a addr=1694 data_out=2a rvalid=1
+# [SCB PASS] Core 0 | Op: a | Data: 2a
+# [iMon] core=2 op=a addr=1616 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2115000
+# [oMon] core=2 op=a addr=1616 data_out=2a rvalid=1
+# [SCB PASS] Core 2 | Op: a | Data: 2a
+# [iMon] core=0 op=4 addr=1627 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=ce B=49 | Product=be | Exp_Stored=be
+# [DRV] Finished Core 0 transaction at 2145000
+# [oMon] core=0 op=4 addr=1627 data_out=be rvalid=1
+# [SCB PASS] Core 0 | Op: 4 | Data: be
+# [iMon] core=3 op=1 addr=354 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2175000
+# [oMon] core=3 op=1 addr=354 data_out=17 rvalid=1
+# [SCB PASS] Core 3 | Op: 1 | Data: 17
+# [iMon] core=1 op=4 addr=857 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=ce B=49 | Product=be | Exp_Stored=be
+# [DRV] Finished Core 1 transaction at 2205000
+# [oMon] core=1 op=4 addr=857 data_out=be rvalid=1
+# [SCB PASS] Core 1 | Op: 4 | Data: be
+# [iMon] core=1 op=c addr=45 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 2235000
+# [oMon] core=1 op=c addr=45 data_out=6a rvalid=1
+# [SCB PASS] Core 1 | Op: c | Data: 6a
+# [iMon] core=0 op=a addr=283 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 2265000
+# [oMon] core=0 op=a addr=283 data_out=2a rvalid=1
+# [SCB PASS] Core 0 | Op: a | Data: 2a
+# [iMon] core=1 op=d addr=196 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 2295000
+# [oMon] core=1 op=d addr=196 data_out=7 rvalid=1
+# [SCB PASS] Core 1 | Op: d | Data: 07
+# [iMon] core=0 op=1 addr=1641 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 2325000
+# [oMon] core=0 op=1 addr=1641 data_out=17 rvalid=1
+# [SCB PASS] Core 0 | Op: 1 | Data: 17
+# [iMon] core=3 op=b addr=1246 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2355000
+# [oMon] core=3 op=b addr=1246 data_out=8c rvalid=1
+# [SCB PASS] Core 3 | Op: b | Data: 8c
+# [iMon] core=1 op=3 addr=660 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 2385000
+# [oMon] core=1 op=3 addr=660 data_out=85 rvalid=1
+# [SCB PASS] Core 1 | Op: 3 | Data: 85
+# [iMon] core=3 op=b addr=1 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2415000
+# [oMon] core=3 op=b addr=1 data_out=8c rvalid=1
+# [SCB PASS] Core 3 | Op: b | Data: 8c
+# [iMon] core=2 op=2 addr=271 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2445000
+# [oMon] core=2 op=2 addr=271 data_out=48 rvalid=1
+# [SCB PASS] Core 2 | Op: 2 | Data: 48
+# [iMon] core=3 op=9 addr=27 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2475000
+# [oMon] core=3 op=9 addr=27 data_out=f0 rvalid=1
+# [SCB PASS] Core 3 | Op: 9 | Data: f0
+# [iMon] core=1 op=b addr=879 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 2505000
+# [oMon] core=1 op=b addr=879 data_out=8c rvalid=1
+# [SCB PASS] Core 1 | Op: b | Data: 8c
+# [iMon] core=0 op=8 addr=1447 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 2535000
+# [oMon] core=0 op=8 addr=1447 data_out=9c rvalid=1
+# [SCB PASS] Core 0 | Op: 8 | Data: 9c
+# [iMon] core=2 op=6 addr=618 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2565000
+# [oMon] core=2 op=6 addr=618 data_out=ce rvalid=1
+# [SCB PASS] Core 2 | Op: 6 | Data: ce
+# [iMon] core=3 op=2 addr=1228 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2595000
+# [oMon] core=3 op=2 addr=1228 data_out=3 rvalid=1
+# [SCB PASS] Core 3 | Op: 2 | Data: 03
+# [iMon] core=2 op=7 addr=302 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2625000
+# [oMon] core=2 op=7 addr=302 data_out=11 rvalid=1
+# [SCB PASS] Core 2 | Op: 7 | Data: 11
+# [iMon] core=1 op=2 addr=1943 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 2655000
+# [oMon] core=1 op=2 addr=1943 data_out=3 rvalid=1
+# [SCB PASS] Core 1 | Op: 2 | Data: 03
+# [iMon] core=2 op=5 addr=61 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2685000
+# [oMon] core=2 op=5 addr=61 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 5 | Data: 00
+# [iMon] core=2 op=5 addr=224 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2715000
+# [oMon] core=2 op=5 addr=224 data_out=0 rvalid=1
+# [SCB PASS] Core 2 | Op: 5 | Data: 00
+# [iMon] core=0 op=c addr=14 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 2745000
+# [oMon] core=0 op=c addr=14 data_out=69 rvalid=1
+# [SCB PASS] Core 0 | Op: c | Data: 69
+# [iMon] core=3 op=0 addr=1717 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2775000
+# [oMon] core=3 op=0 addr=1717 data_out=0 rvalid=1
+# [SCB PASS] Core 3 | Op: 0 | Data: 00
+# [iMon] core=2 op=d addr=1766 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 2 transaction at 2805000
+# [oMon] core=2 op=d addr=1766 data_out=ac rvalid=1
+# [SCB PASS] Core 2 | Op: d | Data: ac
+# [iMon] core=3 op=c addr=1330 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2835000
+# [oMon] core=3 op=c addr=1330 data_out=69 rvalid=1
+# [SCB PASS] Core 3 | Op: c | Data: 69
+# [iMon] core=1 op=c addr=745 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 1 transaction at 2865000
+# [oMon] core=1 op=c addr=745 data_out=69 rvalid=1
+# [SCB PASS] Core 1 | Op: c | Data: 69
+# [iMon] core=3 op=2 addr=1346 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 2895000
+# [oMon] core=3 op=2 addr=1346 data_out=3 rvalid=1
+# [SCB PASS] Core 3 | Op: 2 | Data: 03
+# [iMon] core=1 op=4 addr=1164 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=23 B=d3 | Product=d9 | Exp_Stored=d9
+# [DRV] Finished Core 1 transaction at 2925000
+# [oMon] core=1 op=4 addr=1164 data_out=d9 rvalid=1
+# [SCB PASS] Core 1 | Op: 4 | Data: d9
+# [iMon] core=0 op=4 addr=1489 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=23 B=d3 | Product=d9 | Exp_Stored=d9
+# [DRV] Finished Core 0 transaction at 2955000
+# [oMon] core=0 op=4 addr=1489 data_out=d9 rvalid=1
+# [SCB PASS] Core 0 | Op: 4 | Data: d9
+# [iMon] core=1 op=4 addr=802 we=0 read_en=0 data_in=0
+# [SCB DEBUG] Multiply: A=23 B=d3 | Product=d9 | Exp_Stored=d9
+# [DRV] Finished Core 1 transaction at 2985000
+# [oMon] core=1 op=4 addr=802 data_out=d9 rvalid=1
+# [SCB PASS] Core 1 | Op: 4 | Data: d9
+# [iMon] core=3 op=d addr=1214 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 3 transaction at 3015000
+# [oMon] core=3 op=d addr=1214 data_out=ac rvalid=1
+# [SCB PASS] Core 3 | Op: d | Data: ac
+# [iMon] core=0 op=c addr=538 we=0 read_en=0 data_in=0
+# [DRV] Finished Core 0 transaction at 3045000
+# Generator completed
+# [oMon] core=0 op=c addr=538 data_out=69 rvalid=1
+# [SCB PASS] Core 0 | Op: c | Data: 69
+# [ENV] --- All Transactions Verified ---
+# [ENV] Time: 4045000
+# ** Note: $finish    : environment.sv(93)
+#    Time: 4045 ns  Iteration: 2  Instance: /tb_top
+# 1
+# Break in Task tb_top_sv_unit/environment::post_test at environment.sv line 93
+# Coverage Report Totals BY INSTANCES: Number of Instances 4
+# 
+#     Enabled Coverage              Bins      Hits    Misses    Weight  Coverage
+#     ----------------              ----      ----    ------    ------  --------
+#     Assertions                       1         1         0         1   100.00%
+#     Branches                        44        42         2         1    95.45%
+#     Conditions                      12         8         4         1    66.66%
+#     Covergroups                      1        na        na         1    98.95%
+#         Coverpoints/Crosses          4        na        na         1        na
+#             Covergroup Bins         37        36         1         1    97.29%
+#     Statements                     200       198         2         1    99.00%
+#     Toggles                        296       197        99         1    66.55%
+# Total coverage (filtered view): 87.77%
+# 
+# 
+quit -sim
+# End time: 21:37:50 on Feb 18,2026, Elapsed time: 0:01:10
+# Errors: 0, Warnings: 2
