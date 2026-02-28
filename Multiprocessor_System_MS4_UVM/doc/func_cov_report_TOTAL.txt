@@ -1,0 +1,330 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /tb_top_sv_unit
+=== Design Unit: work.tb_top_sv_unit
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      1        na        na   100.00%
+        Coverpoints/Crosses          6        na        na        na
+            Covergroup Bins         43        43         0   100.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /tb_top_sv_unit/mp_coverage/op_cov              100.00%        100          -    Covered              
+    covered/total bins:                                    43         43          -                      
+    missing/total bins:                                     0         43          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint CP_CORE                                100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin cores[0]                                      270          1          -    Covered              
+        bin cores[1]                                      270          1          -    Covered              
+        bin cores[2]                                      270          1          -    Covered              
+        bin cores[3]                                      280          1          -    Covered              
+    Coverpoint CP_OPCODE                              100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+        illegal_bin invalid                                84                     -    Occurred             
+        bin NOP                                           110          1          -    Covered              
+        bin ALU                                           213          1          -    Covered              
+        bin shift                                          61          1          -    Covered              
+        bin memory                                        246          1          -    Covered              
+        bin logical                                       197          1          -    Covered              
+        bin special                                       179          1          -    Covered              
+    Coverpoint CP_ADDR                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin low_mem                                       274          1          -    Covered              
+        bin mid_mem                                       557          1          -    Covered              
+        bin high_mem                                      259          1          -    Covered              
+    Coverpoint CP_OPERAND_A                           100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                            7          1          -    Covered              
+        bin max                                             4          1          -    Covered              
+        bin others                                       1079          1          -    Covered              
+    Cross CROSS_CORE_OP                               100.00%        100          -    Covered              
+        covered/total bins:                                24         24          -                      
+        missing/total bins:                                 0         24          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <cores[3],special>                         38          1          -    Covered              
+            bin <cores[2],special>                         42          1          -    Covered              
+            bin <cores[1],special>                         45          1          -    Covered              
+            bin <cores[0],special>                         54          1          -    Covered              
+            bin <cores[3],logical>                         63          1          -    Covered              
+            bin <cores[2],logical>                         46          1          -    Covered              
+            bin <cores[1],logical>                         41          1          -    Covered              
+            bin <cores[0],logical>                         47          1          -    Covered              
+            bin <cores[3],shift>                           15          1          -    Covered              
+            bin <cores[2],shift>                           17          1          -    Covered              
+            bin <cores[1],shift>                           12          1          -    Covered              
+            bin <cores[0],shift>                           17          1          -    Covered              
+            bin <cores[3],ALU>                             43          1          -    Covered              
+            bin <cores[2],ALU>                             60          1          -    Covered              
+            bin <cores[1],ALU>                             52          1          -    Covered              
+            bin <cores[0],ALU>                             58          1          -    Covered              
+            bin <cores[3],NOP>                             30          1          -    Covered              
+            bin <cores[2],NOP>                             23          1          -    Covered              
+            bin <cores[1],NOP>                             34          1          -    Covered              
+            bin <cores[0],NOP>                             23          1          -    Covered              
+            bin <cores[3],memory>                          70          1          -    Covered              
+            bin <cores[2],memory>                          58          1          -    Covered              
+            bin <cores[1],memory>                          63          1          -    Covered              
+            bin <cores[0],memory>                          55          1          -    Covered              
+    Cross CROSS_MEM_REGION                            100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <memory,high_mem>                          64          1          -    Covered              
+            bin <memory,mid_mem>                          128          1          -    Covered              
+            bin <memory,low_mem>                           54          1          -    Covered              
+        Illegal and Ignore Bins:
+            ignore_bin non_mem                            760                     -    Occurred             
+ Covergroup instance Processor_Coverage               100.00%        100          -    Covered              
+    covered/total bins:                                    43         43          -                      
+    missing/total bins:                                     0         43          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint CP_CORE                                100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin cores[0]                                      270          1          -    Covered              
+        bin cores[1]                                      270          1          -    Covered              
+        bin cores[2]                                      270          1          -    Covered              
+        bin cores[3]                                      280          1          -    Covered              
+    Coverpoint CP_OPCODE                              100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+        illegal_bin invalid                                84                     -    Occurred             
+        bin NOP                                           110          1          -    Covered              
+        bin ALU                                           213          1          -    Covered              
+        bin shift                                          61          1          -    Covered              
+        bin memory                                        246          1          -    Covered              
+        bin logical                                       197          1          -    Covered              
+        bin special                                       179          1          -    Covered              
+    Coverpoint CP_ADDR                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin low_mem                                       274          1          -    Covered              
+        bin mid_mem                                       557          1          -    Covered              
+        bin high_mem                                      259          1          -    Covered              
+    Coverpoint CP_OPERAND_A                           100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                            7          1          -    Covered              
+        bin max                                             4          1          -    Covered              
+        bin others                                       1079          1          -    Covered              
+    Cross CROSS_CORE_OP                               100.00%        100          -    Covered              
+        covered/total bins:                                24         24          -                      
+        missing/total bins:                                 0         24          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <cores[3],special>                         38          1          -    Covered              
+            bin <cores[2],special>                         42          1          -    Covered              
+            bin <cores[1],special>                         45          1          -    Covered              
+            bin <cores[0],special>                         54          1          -    Covered              
+            bin <cores[3],logical>                         63          1          -    Covered              
+            bin <cores[2],logical>                         46          1          -    Covered              
+            bin <cores[1],logical>                         41          1          -    Covered              
+            bin <cores[0],logical>                         47          1          -    Covered              
+            bin <cores[3],shift>                           15          1          -    Covered              
+            bin <cores[2],shift>                           17          1          -    Covered              
+            bin <cores[1],shift>                           12          1          -    Covered              
+            bin <cores[0],shift>                           17          1          -    Covered              
+            bin <cores[3],ALU>                             43          1          -    Covered              
+            bin <cores[2],ALU>                             60          1          -    Covered              
+            bin <cores[1],ALU>                             52          1          -    Covered              
+            bin <cores[0],ALU>                             58          1          -    Covered              
+            bin <cores[3],NOP>                             30          1          -    Covered              
+            bin <cores[2],NOP>                             23          1          -    Covered              
+            bin <cores[1],NOP>                             34          1          -    Covered              
+            bin <cores[0],NOP>                             23          1          -    Covered              
+            bin <cores[3],memory>                          70          1          -    Covered              
+            bin <cores[2],memory>                          58          1          -    Covered              
+            bin <cores[1],memory>                          63          1          -    Covered              
+            bin <cores[0],memory>                          55          1          -    Covered              
+    Cross CROSS_MEM_REGION                            100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <memory,high_mem>                          64          1          -    Covered              
+            bin <memory,mid_mem>                          128          1          -    Covered              
+            bin <memory,low_mem>                           54          1          -    Covered              
+        Illegal and Ignore Bins:
+            ignore_bin non_mem                            760                     -    Occurred             
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /tb_top_sv_unit/mp_coverage/op_cov              100.00%        100          -    Covered              
+    covered/total bins:                                    43         43          -                      
+    missing/total bins:                                     0         43          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint CP_CORE                                100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin cores[0]                                      270          1          -    Covered              
+        bin cores[1]                                      270          1          -    Covered              
+        bin cores[2]                                      270          1          -    Covered              
+        bin cores[3]                                      280          1          -    Covered              
+    Coverpoint CP_OPCODE                              100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+        illegal_bin invalid                                84                     -    Occurred             
+        bin NOP                                           110          1          -    Covered              
+        bin ALU                                           213          1          -    Covered              
+        bin shift                                          61          1          -    Covered              
+        bin memory                                        246          1          -    Covered              
+        bin logical                                       197          1          -    Covered              
+        bin special                                       179          1          -    Covered              
+    Coverpoint CP_ADDR                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin low_mem                                       274          1          -    Covered              
+        bin mid_mem                                       557          1          -    Covered              
+        bin high_mem                                      259          1          -    Covered              
+    Coverpoint CP_OPERAND_A                           100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                            7          1          -    Covered              
+        bin max                                             4          1          -    Covered              
+        bin others                                       1079          1          -    Covered              
+    Cross CROSS_CORE_OP                               100.00%        100          -    Covered              
+        covered/total bins:                                24         24          -                      
+        missing/total bins:                                 0         24          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <cores[3],special>                         38          1          -    Covered              
+            bin <cores[2],special>                         42          1          -    Covered              
+            bin <cores[1],special>                         45          1          -    Covered              
+            bin <cores[0],special>                         54          1          -    Covered              
+            bin <cores[3],logical>                         63          1          -    Covered              
+            bin <cores[2],logical>                         46          1          -    Covered              
+            bin <cores[1],logical>                         41          1          -    Covered              
+            bin <cores[0],logical>                         47          1          -    Covered              
+            bin <cores[3],shift>                           15          1          -    Covered              
+            bin <cores[2],shift>                           17          1          -    Covered              
+            bin <cores[1],shift>                           12          1          -    Covered              
+            bin <cores[0],shift>                           17          1          -    Covered              
+            bin <cores[3],ALU>                             43          1          -    Covered              
+            bin <cores[2],ALU>                             60          1          -    Covered              
+            bin <cores[1],ALU>                             52          1          -    Covered              
+            bin <cores[0],ALU>                             58          1          -    Covered              
+            bin <cores[3],NOP>                             30          1          -    Covered              
+            bin <cores[2],NOP>                             23          1          -    Covered              
+            bin <cores[1],NOP>                             34          1          -    Covered              
+            bin <cores[0],NOP>                             23          1          -    Covered              
+            bin <cores[3],memory>                          70          1          -    Covered              
+            bin <cores[2],memory>                          58          1          -    Covered              
+            bin <cores[1],memory>                          63          1          -    Covered              
+            bin <cores[0],memory>                          55          1          -    Covered              
+    Cross CROSS_MEM_REGION                            100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <memory,high_mem>                          64          1          -    Covered              
+            bin <memory,mid_mem>                          128          1          -    Covered              
+            bin <memory,low_mem>                           54          1          -    Covered              
+        Illegal and Ignore Bins:
+            ignore_bin non_mem                            760                     -    Occurred             
+ Covergroup instance Processor_Coverage               100.00%        100          -    Covered              
+    covered/total bins:                                    43         43          -                      
+    missing/total bins:                                     0         43          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint CP_CORE                                100.00%        100          -    Covered              
+        covered/total bins:                                 4          4          -                      
+        missing/total bins:                                 0          4          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin cores[0]                                      270          1          -    Covered              
+        bin cores[1]                                      270          1          -    Covered              
+        bin cores[2]                                      270          1          -    Covered              
+        bin cores[3]                                      280          1          -    Covered              
+    Coverpoint CP_OPCODE                              100.00%        100          -    Covered              
+        covered/total bins:                                 6          6          -                      
+        missing/total bins:                                 0          6          -                      
+        % Hit:                                        100.00%        100          -                      
+        illegal_bin invalid                                84                     -    Occurred             
+        bin NOP                                           110          1          -    Covered              
+        bin ALU                                           213          1          -    Covered              
+        bin shift                                          61          1          -    Covered              
+        bin memory                                        246          1          -    Covered              
+        bin logical                                       197          1          -    Covered              
+        bin special                                       179          1          -    Covered              
+    Coverpoint CP_ADDR                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin low_mem                                       274          1          -    Covered              
+        bin mid_mem                                       557          1          -    Covered              
+        bin high_mem                                      259          1          -    Covered              
+    Coverpoint CP_OPERAND_A                           100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                            7          1          -    Covered              
+        bin max                                             4          1          -    Covered              
+        bin others                                       1079          1          -    Covered              
+    Cross CROSS_CORE_OP                               100.00%        100          -    Covered              
+        covered/total bins:                                24         24          -                      
+        missing/total bins:                                 0         24          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <cores[3],special>                         38          1          -    Covered              
+            bin <cores[2],special>                         42          1          -    Covered              
+            bin <cores[1],special>                         45          1          -    Covered              
+            bin <cores[0],special>                         54          1          -    Covered              
+            bin <cores[3],logical>                         63          1          -    Covered              
+            bin <cores[2],logical>                         46          1          -    Covered              
+            bin <cores[1],logical>                         41          1          -    Covered              
+            bin <cores[0],logical>                         47          1          -    Covered              
+            bin <cores[3],shift>                           15          1          -    Covered              
+            bin <cores[2],shift>                           17          1          -    Covered              
+            bin <cores[1],shift>                           12          1          -    Covered              
+            bin <cores[0],shift>                           17          1          -    Covered              
+            bin <cores[3],ALU>                             43          1          -    Covered              
+            bin <cores[2],ALU>                             60          1          -    Covered              
+            bin <cores[1],ALU>                             52          1          -    Covered              
+            bin <cores[0],ALU>                             58          1          -    Covered              
+            bin <cores[3],NOP>                             30          1          -    Covered              
+            bin <cores[2],NOP>                             23          1          -    Covered              
+            bin <cores[1],NOP>                             34          1          -    Covered              
+            bin <cores[0],NOP>                             23          1          -    Covered              
+            bin <cores[3],memory>                          70          1          -    Covered              
+            bin <cores[2],memory>                          58          1          -    Covered              
+            bin <cores[1],memory>                          63          1          -    Covered              
+            bin <cores[0],memory>                          55          1          -    Covered              
+    Cross CROSS_MEM_REGION                            100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <memory,high_mem>                          64          1          -    Covered              
+            bin <memory,mid_mem>                          128          1          -    Covered              
+            bin <memory,low_mem>                           54          1          -    Covered              
+        Illegal and Ignore Bins:
+            ignore_bin non_mem                            760                     -    Occurred             
+
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+
+Total Coverage By Instance (filtered view): 100.00%
+
