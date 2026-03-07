@@ -1,8 +1,5 @@
-// ============================================================
 // ECE-593 Milestone 5 — Bug Injection Scenario #3
-// BUG: STORE (0110) never writes to memory
-// QuestaSim 2025.2.1 compatible
-// ============================================================
+
 
 module mp_dut #(
     parameter AW = 11,
