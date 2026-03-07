@@ -2,7 +2,6 @@
 
 **Course:** ECE 593 – Fundamentals of Pre-Silicon Validation
 **University:** Portland State University
-**Author:** Saleh Esmaeil
 
 ---
 
