@@ -1,0 +1,883 @@
+# ** Note: (vsim-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
+# vsim -c -voptargs="+acc" -coverage -sv_seed random tb_top "+UVM_TESTNAME=mp_bug1_test" "+UVM_VERBOSITY=UVM_LOW" -l doc/bug1_test.log -do "run -all; coverage save doc/bug1_test.ucdb; quit -sim" 
+# Start time: 16:21:05 on Mar 06,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vopt-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading sv_std.std
+# Loading work.mp_intf(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.tb_top_bug_sv_unit(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.tb_top(fast)
+# Loading work.mp_intf(fast__2)
+# Loading work.mp_dut(fast)
+# Loading C:/questasim64_2025.2_1/uvm-1.1d\win64\uvm_dpi.dll
+# Sv_Seed = 1720573941
+# run -all
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test mp_bug1_test...
+# UVM_INFO UVM_TB/env.sv(45) @ 0: uvm_test_top.env [ENV] All 4 Core Agents successfully instantiated and configured.
+# UVM_INFO UVM_TB/test.sv(47) @ 0: uvm_test_top [TOPOLOGY] Displaying ASCII Testbench Topology
+# uvm_test_top: (mp_bug1_test@471) |
+#   env: (mp_env@478) |
+#     core_agnt_0: (mp_agent@557) |
+#       drv: (mp_driver@608) |
+#         rsp_port: (uvm_analysis_port@623) @623 
+#         seq_item_port: (uvm_seq_item_pull_port@615) @615 
+#       
+#       mon: (mp_monitor@593) |
+#         monitor_A_port: (uvm_analysis_port@600) @600 
+#       
+#       seqr: (mp_sequencer@631) |
+#         rsp_export: (uvm_analysis_export@638) @638 
+#         seq_item_export: (uvm_seq_item_pull_imp@732) @732 
+#         arbitration_queue: - 
+#         lock_queue: - 
+#         num_last_reqs: 'd1 
+#         num_last_rsps: 'd1 
+#       
+#     
+#     core_agnt_1: (mp_agent@565) |
+#       drv: (mp_driver@769) |
+#         rsp_port: (uvm_analysis_port@784) @784 
+#         seq_item_port: (uvm_seq_item_pull_port@776) @776 
+#       
+#       mon: (mp_monitor@754) |
+#         monitor_A_port: (uvm_analysis_port@761) @761 
+#       
+#       seqr: (mp_sequencer@792) |
+#         rsp_export: (uvm_analysis_export@799) @799 
+#         seq_item_export: (uvm_seq_item_pull_imp@893) @893 
+#         arbitration_queue: - 
+#         lock_queue: - 
+#         num_last_reqs: 'd1 
+#         num_last_rsps: 'd1 
+#       
+#     
+#     core_agnt_2: (mp_agent@573) |
+#       drv: (mp_driver@930) |
+#         rsp_port: (uvm_analysis_port@945) @945 
+#         seq_item_port: (uvm_seq_item_pull_port@937) @937 
+#       
+#       mon: (mp_monitor@915) |
+#         monitor_A_port: (uvm_analysis_port@922) @922 
+#       
+#       seqr: (mp_sequencer@953) |
+#         rsp_export: (uvm_analysis_export@960) @960 
+#         seq_item_export: (uvm_seq_item_pull_imp@1054) @1054 
+#         arbitration_queue: - 
+#         lock_queue: - 
+#         num_last_reqs: 'd1 
+#         num_last_rsps: 'd1 
+#       
+#     
+#     core_agnt_3: (mp_agent@581) |
+#       drv: (mp_driver@1091) |
+#         rsp_port: (uvm_analysis_port@1106) @1106 
+#         seq_item_port: (uvm_seq_item_pull_port@1098) @1098 
+#       
+#       mon: (mp_monitor@1076) |
+#         monitor_A_port: (uvm_analysis_port@1083) @1083 
+#       
+#       seqr: (mp_sequencer@1114) |
+#         rsp_export: (uvm_analysis_export@1121) @1121 
+#         seq_item_export: (uvm_seq_item_pull_imp@1215) @1215 
+#         arbitration_queue: - 
+#         lock_queue: - 
+#         num_last_reqs: 'd1 
+#         num_last_rsps: 'd1 
+#       
+#     
+#     cov: (mp_coverage@485) |
+#       analysis_imp: (uvm_analysis_imp@492) @492 
+#     
+#     scb: (mp_scoreboard@500) |
+#       item_collected_fifo: (uvm_tlm_analysis_fifo #(T)@507) |
+#         analysis_export: (uvm_analysis_imp@546) @546 
+#         get_ap: (uvm_analysis_port@538) @538 
+#         get_peek_export: (uvm_get_peek_imp@522) @522 
+#         put_ap: (uvm_analysis_port@530) @530 
+#         put_export: (uvm_put_imp@514) @514 
+#       
+#     
+#   
+# 
+# 
+# --- UVM TESTBENCH TOPOLOGY ---
+# UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+# ------------------------------------------------------------------
+# Name                       Type                        Size  Value
+# ------------------------------------------------------------------
+# uvm_test_top               mp_bug1_test                -     @471 
+#   env                      mp_env                      -     @478 
+#     core_agnt_0            mp_agent                    -     @557 
+#       drv                  mp_driver                   -     @608 
+#         rsp_port           uvm_analysis_port           -     @623 
+#         seq_item_port      uvm_seq_item_pull_port      -     @615 
+#       mon                  mp_monitor                  -     @593 
+#         monitor_A_port     uvm_analysis_port           -     @600 
+#       seqr                 mp_sequencer                -     @631 
+#         rsp_export         uvm_analysis_export         -     @638 
+#         seq_item_export    uvm_seq_item_pull_imp       -     @732 
+#         arbitration_queue  array                       0     -    
+#         lock_queue         array                       0     -    
+#         num_last_reqs      integral                    32    'd1  
+#         num_last_rsps      integral                    32    'd1  
+#     core_agnt_1            mp_agent                    -     @565 
+#       drv                  mp_driver                   -     @769 
+#         rsp_port           uvm_analysis_port           -     @784 
+#         seq_item_port      uvm_seq_item_pull_port      -     @776 
+#       mon                  mp_monitor                  -     @754 
+#         monitor_A_port     uvm_analysis_port           -     @761 
+#       seqr                 mp_sequencer                -     @792 
+#         rsp_export         uvm_analysis_export         -     @799 
+#         seq_item_export    uvm_seq_item_pull_imp       -     @893 
+#         arbitration_queue  array                       0     -    
+#         lock_queue         array                       0     -    
+#         num_last_reqs      integral                    32    'd1  
+#         num_last_rsps      integral                    32    'd1  
+#     core_agnt_2            mp_agent                    -     @573 
+#       drv                  mp_driver                   -     @930 
+#         rsp_port           uvm_analysis_port           -     @945 
+#         seq_item_port      uvm_seq_item_pull_port      -     @937 
+#       mon                  mp_monitor                  -     @915 
+#         monitor_A_port     uvm_analysis_port           -     @922 
+#       seqr                 mp_sequencer                -     @953 
+#         rsp_export         uvm_analysis_export         -     @960 
+#         seq_item_export    uvm_seq_item_pull_imp       -     @1054
+#         arbitration_queue  array                       0     -    
+#         lock_queue         array                       0     -    
+#         num_last_reqs      integral                    32    'd1  
+#         num_last_rsps      integral                    32    'd1  
+#     core_agnt_3            mp_agent                    -     @581 
+#       drv                  mp_driver                   -     @1091
+#         rsp_port           uvm_analysis_port           -     @1106
+#         seq_item_port      uvm_seq_item_pull_port      -     @1098
+#       mon                  mp_monitor                  -     @1076
+#         monitor_A_port     uvm_analysis_port           -     @1083
+#       seqr                 mp_sequencer                -     @1114
+#         rsp_export         uvm_analysis_export         -     @1121
+#         seq_item_export    uvm_seq_item_pull_imp       -     @1215
+#         arbitration_queue  array                       0     -    
+#         lock_queue         array                       0     -    
+#         num_last_reqs      integral                    32    'd1  
+#         num_last_rsps      integral                    32    'd1  
+#     cov                    mp_coverage                 -     @485 
+#       analysis_imp         uvm_analysis_imp            -     @492 
+#     scb                    mp_scoreboard               -     @500 
+#       item_collected_fifo  uvm_tlm_analysis_fifo #(T)  -     @507 
+#         analysis_export    uvm_analysis_imp            -     @546 
+#         get_ap             uvm_analysis_port           -     @538 
+#         get_peek_export    uvm_get_peek_imp            -     @522 
+#         put_ap             uvm_analysis_port           -     @530 
+#         put_export         uvm_put_imp                 -     @514 
+# ------------------------------------------------------------------
+# 
+# 
+# --- UVM CONFIGURATION DATABASE ---
+# UVM_INFO @ 0: uvm_test_top [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0 [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_0$/] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.drv [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_0\.drv$/] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.drv.rsp_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.drv.seq_item_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.mon [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_0\.mon$/] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.mon.monitor_A_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.req_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.req_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.req_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.req_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.req_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.rsp_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.seq_item_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.sqr_rsp_analysis_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.sqr_rsp_analysis_fifo.analysis_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.sqr_rsp_analysis_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.sqr_rsp_analysis_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.sqr_rsp_analysis_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_0.seqr.sqr_rsp_analysis_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1 [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_1$/] : (int) 1
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.drv [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_1\.drv$/] : (int) 1
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.drv.rsp_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.drv.seq_item_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.mon [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_1\.mon$/] : (int) 1
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.mon.monitor_A_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.req_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.req_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.req_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.req_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.req_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.rsp_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.seq_item_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.sqr_rsp_analysis_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.sqr_rsp_analysis_fifo.analysis_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.sqr_rsp_analysis_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.sqr_rsp_analysis_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.sqr_rsp_analysis_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_1.seqr.sqr_rsp_analysis_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2 [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_2$/] : (int) 2
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.drv [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_2\.drv$/] : (int) 2
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.drv.rsp_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.drv.seq_item_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.mon [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_2\.mon$/] : (int) 2
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.mon.monitor_A_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.req_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.req_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.req_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.req_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.req_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.rsp_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.seq_item_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.sqr_rsp_analysis_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.sqr_rsp_analysis_fifo.analysis_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.sqr_rsp_analysis_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.sqr_rsp_analysis_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.sqr_rsp_analysis_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_2.seqr.sqr_rsp_analysis_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3 [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_3$/] : (int) 3
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.drv [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_3\.drv$/] : (int) 3
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.drv.rsp_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.drv.seq_item_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.mon [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# core_id [/^uvm_test_top\.env\.core_agnt_3\.mon$/] : (int) 3
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.mon.monitor_A_port [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.req_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.req_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.req_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.req_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.req_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.rsp_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.seq_item_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.sqr_rsp_analysis_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.sqr_rsp_analysis_fifo.analysis_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.sqr_rsp_analysis_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.sqr_rsp_analysis_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.sqr_rsp_analysis_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.core_agnt_3.seqr.sqr_rsp_analysis_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.cov [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.cov.analysis_imp [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb.item_collected_fifo [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb.item_collected_fifo.analysis_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb.item_collected_fifo.get_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb.item_collected_fifo.get_peek_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb.item_collected_fifo.put_ap [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# UVM_INFO @ 0: uvm_test_top.env.scb.item_collected_fifo.put_export [CFGPRT] visible resources:
+# vif [/^.*$/] : (virtual mp_intf) /tb_top/intf
+# -  
+# recording_detail [] : (reg signed[4095:0]) 0
+# -  
+# recording_detail [] : (int) 0
+# -  
+# ----------------------------------
+# 
+# UVM_INFO UVM_TB/bug_tests.sv(164) @ 0: uvm_test_top [BUG1_TEST] === BUG INJECTION TEST 1: ADD returns SUB ===
+# UVM_INFO UVM_TB/bug_tests.sv(165) @ 0: uvm_test_top [BUG1_TEST] Expected: SCB_MISMATCH on ALL ADD transactions
+# UVM_INFO UVM_TB/bug_tests.sv(32) @ 0: uvm_test_top.env.core_agnt_0.seqr@@seq [BUG1_SEQ] Starting Directed ADD Test (Bug 1 Detection)
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 85: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=1 Core=0 Op=0x1 Exp=0x02 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 155: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=2 Core=0 Op=0x1 Exp=0x0f Act=0x05
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 225: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=3 Core=0 Op=0x1 Exp=0x00 Act=0xfe
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 295: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=4 Core=0 Op=0x1 Exp=0x30 Act=0xf0
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 365: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=5 Core=0 Op=0x1 Exp=0x88 Act=0x22
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 435: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=6 Core=0 Op=0x1 Exp=0xbd Act=0x99
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 505: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=7 Core=0 Op=0x1 Exp=0xfe Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 575: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=8 Core=0 Op=0x1 Exp=0xff Act=0x01
+# UVM_INFO UVM_TB/bug_tests.sv(45) @ 595: uvm_test_top.env.core_agnt_0.seqr@@seq [BUG1_SEQ] ADD Directed Sequence Done
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 795: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO UVM_TB/driver.sv(132) @ 795: uvm_test_top.env.core_agnt_0.drv [DRIVER_REPORT] Core 0: Total transactions driven = 8
+# UVM_INFO UVM_TB/driver.sv(132) @ 795: uvm_test_top.env.core_agnt_1.drv [DRIVER_REPORT] Core 1: Total transactions driven = 0
+# UVM_INFO UVM_TB/driver.sv(132) @ 795: uvm_test_top.env.core_agnt_2.drv [DRIVER_REPORT] Core 2: Total transactions driven = 0
+# UVM_INFO UVM_TB/driver.sv(132) @ 795: uvm_test_top.env.core_agnt_3.drv [DRIVER_REPORT] Core 3: Total transactions driven = 0
+# UVM_INFO UVM_TB/coverage.sv(91) @ 795: uvm_test_top.env.cov [COVERAGE] ========================================
+# UVM_INFO UVM_TB/coverage.sv(92) @ 795: uvm_test_top.env.cov [COVERAGE]        FUNCTIONAL COVERAGE REPORT       
+# UVM_INFO UVM_TB/coverage.sv(93) @ 795: uvm_test_top.env.cov [COVERAGE] ========================================
+# ** Fatal: (SIGSEGV) Bad handle or reference.
+#    Time: 795 ns  Iteration: 37  Instance: /tb_top_bug_sv_unit::mp_coverage::report_phase File: UVM_TB/coverage.sv
