@@ -1,8 +1,5 @@
-// ============================================================
 // ECE-593 Milestone 5 — Bug Injection Scenario #1
 // BUG: ADD (0001) performs A-B instead of A+B
-// QuestaSim 2025.2.1 compatible
-// ============================================================
 
 module mp_dut #(
     parameter AW = 11,
