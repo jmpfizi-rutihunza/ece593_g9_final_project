@@ -1,8 +1,6 @@
-// ============================================================
 // ECE-593 Milestone 5 — Bug Injection Scenario #2
 // BUG: SHR/SHL shift directions swapped
-// QuestaSim 2025.2.1 compatible
-// ============================================================
+
 
 module mp_dut #(
     parameter AW = 11,
