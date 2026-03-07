@@ -1,6 +1,6 @@
 # ** Note: (vsim-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # vsim -c -voptargs="+acc" -coverage -sv_seed random tb_top "+UVM_TESTNAME=mp_coverage_test" "+UVM_VERBOSITY=UVM_LOW" -l doc/mp_coverage_test.log -do "run -all; coverage save doc/mp_coverage_test.ucdb; quit -sim" 
-# Start time: 16:20:09 on Mar 06,2026
+# Start time: 17:31:17 on Mar 06,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
 # ** Note: (vopt-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
@@ -14,7 +14,7 @@
 # Loading work.mp_intf(fast__2)
 # Loading work.mp_dut(fast)
 # Loading C:/questasim64_2025.2_1/uvm-1.1d\win64\uvm_dpi.dll
-# Sv_Seed = 437109605
+# Sv_Seed = 1657788037
 # run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
@@ -2280,99 +2280,99 @@
 # UVM_INFO UVM_TB/sequence.sv(59) @ 60525: uvm_test_top.env.core_agnt_1.seqr@@seq [SEQ] Starting READ-ONLY sequence
 # UVM_INFO UVM_TB/sequence.sv(120) @ 60525: uvm_test_top.env.core_agnt_2.seqr@@seq [SEQ] Starting WRITE-READ sequence
 # UVM_INFO UVM_TB/sequence.sv(175) @ 60525: uvm_test_top.env.core_agnt_3.seqr@@seq [SEQ] Starting READ-WRITE-READ sequence
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60555: uvm_test_top.env.scb [[SCB]] MATCH burstid=1513 Core=0 Op=0x6 Exp=0xfd Act=0xfd
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60555: uvm_test_top.env.scb [[SCB]] MATCH burstid=1513 Core=0 Op=0x6 Exp=0x28 Act=0x28
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 60605: uvm_test_top.env.scb [[SCB]] MATCH burstid=1514 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60635: uvm_test_top.env.scb [[SCB]] MATCH burstid=1515 Core=2 Op=0x6 Exp=0x29 Act=0x29
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60635: uvm_test_top.env.scb [[SCB]] MATCH burstid=1515 Core=2 Op=0x6 Exp=0x41 Act=0x41
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 60685: uvm_test_top.env.scb [[SCB]] MATCH burstid=1516 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60715: uvm_test_top.env.scb [[SCB]] MATCH burstid=1517 Core=0 Op=0x6 Exp=0xb7 Act=0xb7
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60715: uvm_test_top.env.scb [[SCB]] MATCH burstid=1517 Core=0 Op=0x6 Exp=0xeb Act=0xeb
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 60765: uvm_test_top.env.scb [[SCB]] MATCH burstid=1518 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60805: uvm_test_top.env.scb [[SCB]] MATCH burstid=1519 Core=2 Op=0x5 Exp=0x29 Act=0x29
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60835: uvm_test_top.env.scb [[SCB]] MATCH burstid=1520 Core=3 Op=0x6 Exp=0xb5 Act=0xb5
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60875: uvm_test_top.env.scb [[SCB]] MATCH burstid=1521 Core=0 Op=0x6 Exp=0xca Act=0xca
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60805: uvm_test_top.env.scb [[SCB]] MATCH burstid=1519 Core=2 Op=0x5 Exp=0x41 Act=0x41
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60835: uvm_test_top.env.scb [[SCB]] MATCH burstid=1520 Core=3 Op=0x6 Exp=0x72 Act=0x72
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60875: uvm_test_top.env.scb [[SCB]] MATCH burstid=1521 Core=0 Op=0x6 Exp=0x92 Act=0x92
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 60925: uvm_test_top.env.scb [[SCB]] MATCH burstid=1522 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60955: uvm_test_top.env.scb [[SCB]] MATCH burstid=1523 Core=2 Op=0x6 Exp=0x9b Act=0x9b
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61005: uvm_test_top.env.scb [[SCB]] MATCH burstid=1524 Core=3 Op=0x5 Exp=0xb5 Act=0xb5
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61035: uvm_test_top.env.scb [[SCB]] MATCH burstid=1525 Core=0 Op=0x6 Exp=0x01 Act=0x01
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 60955: uvm_test_top.env.scb [[SCB]] MATCH burstid=1523 Core=2 Op=0x6 Exp=0x80 Act=0x80
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61005: uvm_test_top.env.scb [[SCB]] MATCH burstid=1524 Core=3 Op=0x5 Exp=0x72 Act=0x72
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61035: uvm_test_top.env.scb [[SCB]] MATCH burstid=1525 Core=0 Op=0x6 Exp=0x3a Act=0x3a
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61085: uvm_test_top.env.scb [[SCB]] MATCH burstid=1526 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61125: uvm_test_top.env.scb [[SCB]] MATCH burstid=1527 Core=2 Op=0x5 Exp=0x9b Act=0x9b
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61125: uvm_test_top.env.scb [[SCB]] MATCH burstid=1527 Core=2 Op=0x5 Exp=0x80 Act=0x80
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61165: uvm_test_top.env.scb [[SCB]] MATCH burstid=1528 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61195: uvm_test_top.env.scb [[SCB]] MATCH burstid=1529 Core=0 Op=0x6 Exp=0xf3 Act=0xf3
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61195: uvm_test_top.env.scb [[SCB]] MATCH burstid=1529 Core=0 Op=0x6 Exp=0xf7 Act=0xf7
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61245: uvm_test_top.env.scb [[SCB]] MATCH burstid=1530 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61275: uvm_test_top.env.scb [[SCB]] MATCH burstid=1531 Core=2 Op=0x6 Exp=0x52 Act=0x52
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61315: uvm_test_top.env.scb [[SCB]] MATCH burstid=1532 Core=3 Op=0x6 Exp=0x34 Act=0x34
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61355: uvm_test_top.env.scb [[SCB]] MATCH burstid=1533 Core=0 Op=0x6 Exp=0xa1 Act=0xa1
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61275: uvm_test_top.env.scb [[SCB]] MATCH burstid=1531 Core=2 Op=0x6 Exp=0x27 Act=0x27
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61315: uvm_test_top.env.scb [[SCB]] MATCH burstid=1532 Core=3 Op=0x6 Exp=0x6f Act=0x6f
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61355: uvm_test_top.env.scb [[SCB]] MATCH burstid=1533 Core=0 Op=0x6 Exp=0x4b Act=0x4b
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61405: uvm_test_top.env.scb [[SCB]] MATCH burstid=1534 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61445: uvm_test_top.env.scb [[SCB]] MATCH burstid=1535 Core=2 Op=0x5 Exp=0x52 Act=0x52
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61485: uvm_test_top.env.scb [[SCB]] MATCH burstid=1536 Core=3 Op=0x5 Exp=0x34 Act=0x34
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61515: uvm_test_top.env.scb [[SCB]] MATCH burstid=1537 Core=0 Op=0x6 Exp=0xd2 Act=0xd2
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61445: uvm_test_top.env.scb [[SCB]] MATCH burstid=1535 Core=2 Op=0x5 Exp=0x27 Act=0x27
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61485: uvm_test_top.env.scb [[SCB]] MATCH burstid=1536 Core=3 Op=0x5 Exp=0x6f Act=0x6f
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61515: uvm_test_top.env.scb [[SCB]] MATCH burstid=1537 Core=0 Op=0x6 Exp=0x58 Act=0x58
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61565: uvm_test_top.env.scb [[SCB]] MATCH burstid=1538 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61595: uvm_test_top.env.scb [[SCB]] MATCH burstid=1539 Core=2 Op=0x6 Exp=0x49 Act=0x49
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61595: uvm_test_top.env.scb [[SCB]] MATCH burstid=1539 Core=2 Op=0x6 Exp=0x33 Act=0x33
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61645: uvm_test_top.env.scb [[SCB]] MATCH burstid=1540 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61675: uvm_test_top.env.scb [[SCB]] MATCH burstid=1541 Core=0 Op=0x6 Exp=0xa5 Act=0xa5
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61675: uvm_test_top.env.scb [[SCB]] MATCH burstid=1541 Core=0 Op=0x6 Exp=0x89 Act=0x89
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61725: uvm_test_top.env.scb [[SCB]] MATCH burstid=1542 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61765: uvm_test_top.env.scb [[SCB]] MATCH burstid=1543 Core=2 Op=0x5 Exp=0x49 Act=0x49
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61795: uvm_test_top.env.scb [[SCB]] MATCH burstid=1544 Core=3 Op=0x6 Exp=0x32 Act=0x32
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61835: uvm_test_top.env.scb [[SCB]] MATCH burstid=1545 Core=0 Op=0x6 Exp=0x58 Act=0x58
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61765: uvm_test_top.env.scb [[SCB]] MATCH burstid=1543 Core=2 Op=0x5 Exp=0x33 Act=0x33
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61795: uvm_test_top.env.scb [[SCB]] MATCH burstid=1544 Core=3 Op=0x6 Exp=0xcb Act=0xcb
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61835: uvm_test_top.env.scb [[SCB]] MATCH burstid=1545 Core=0 Op=0x6 Exp=0x3d Act=0x3d
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 61885: uvm_test_top.env.scb [[SCB]] MATCH burstid=1546 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61915: uvm_test_top.env.scb [[SCB]] MATCH burstid=1547 Core=2 Op=0x6 Exp=0x8a Act=0x8a
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61965: uvm_test_top.env.scb [[SCB]] MATCH burstid=1548 Core=3 Op=0x5 Exp=0x32 Act=0x32
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61995: uvm_test_top.env.scb [[SCB]] MATCH burstid=1549 Core=0 Op=0x6 Exp=0xba Act=0xba
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61915: uvm_test_top.env.scb [[SCB]] MATCH burstid=1547 Core=2 Op=0x6 Exp=0x31 Act=0x31
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61965: uvm_test_top.env.scb [[SCB]] MATCH burstid=1548 Core=3 Op=0x5 Exp=0xcb Act=0xcb
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 61995: uvm_test_top.env.scb [[SCB]] MATCH burstid=1549 Core=0 Op=0x6 Exp=0xf1 Act=0xf1
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62045: uvm_test_top.env.scb [[SCB]] MATCH burstid=1550 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62085: uvm_test_top.env.scb [[SCB]] MATCH burstid=1551 Core=2 Op=0x5 Exp=0x8a Act=0x8a
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62085: uvm_test_top.env.scb [[SCB]] MATCH burstid=1551 Core=2 Op=0x5 Exp=0x31 Act=0x31
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62125: uvm_test_top.env.scb [[SCB]] MATCH burstid=1552 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62155: uvm_test_top.env.scb [[SCB]] MATCH burstid=1553 Core=0 Op=0x6 Exp=0x12 Act=0x12
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62155: uvm_test_top.env.scb [[SCB]] MATCH burstid=1553 Core=0 Op=0x6 Exp=0x64 Act=0x64
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62205: uvm_test_top.env.scb [[SCB]] MATCH burstid=1554 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62235: uvm_test_top.env.scb [[SCB]] MATCH burstid=1555 Core=2 Op=0x6 Exp=0xcb Act=0xcb
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62275: uvm_test_top.env.scb [[SCB]] MATCH burstid=1556 Core=3 Op=0x6 Exp=0x1f Act=0x1f
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62315: uvm_test_top.env.scb [[SCB]] MATCH burstid=1557 Core=0 Op=0x6 Exp=0xdb Act=0xdb
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62235: uvm_test_top.env.scb [[SCB]] MATCH burstid=1555 Core=2 Op=0x6 Exp=0xee Act=0xee
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62275: uvm_test_top.env.scb [[SCB]] MATCH burstid=1556 Core=3 Op=0x6 Exp=0x88 Act=0x88
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62315: uvm_test_top.env.scb [[SCB]] MATCH burstid=1557 Core=0 Op=0x6 Exp=0x7d Act=0x7d
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62365: uvm_test_top.env.scb [[SCB]] MATCH burstid=1558 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62405: uvm_test_top.env.scb [[SCB]] MATCH burstid=1559 Core=2 Op=0x5 Exp=0xcb Act=0xcb
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62445: uvm_test_top.env.scb [[SCB]] MATCH burstid=1560 Core=3 Op=0x5 Exp=0x1f Act=0x1f
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62475: uvm_test_top.env.scb [[SCB]] MATCH burstid=1561 Core=0 Op=0x6 Exp=0x4a Act=0x4a
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62405: uvm_test_top.env.scb [[SCB]] MATCH burstid=1559 Core=2 Op=0x5 Exp=0xee Act=0xee
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62445: uvm_test_top.env.scb [[SCB]] MATCH burstid=1560 Core=3 Op=0x5 Exp=0x88 Act=0x88
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62475: uvm_test_top.env.scb [[SCB]] MATCH burstid=1561 Core=0 Op=0x6 Exp=0x08 Act=0x08
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62525: uvm_test_top.env.scb [[SCB]] MATCH burstid=1562 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62555: uvm_test_top.env.scb [[SCB]] MATCH burstid=1563 Core=2 Op=0x6 Exp=0xfa Act=0xfa
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62555: uvm_test_top.env.scb [[SCB]] MATCH burstid=1563 Core=2 Op=0x6 Exp=0x40 Act=0x40
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62605: uvm_test_top.env.scb [[SCB]] MATCH burstid=1564 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62635: uvm_test_top.env.scb [[SCB]] MATCH burstid=1565 Core=0 Op=0x6 Exp=0x59 Act=0x59
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62635: uvm_test_top.env.scb [[SCB]] MATCH burstid=1565 Core=0 Op=0x6 Exp=0x85 Act=0x85
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62685: uvm_test_top.env.scb [[SCB]] MATCH burstid=1566 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62725: uvm_test_top.env.scb [[SCB]] MATCH burstid=1567 Core=2 Op=0x5 Exp=0xfa Act=0xfa
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62755: uvm_test_top.env.scb [[SCB]] MATCH burstid=1568 Core=3 Op=0x6 Exp=0x8f Act=0x8f
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62795: uvm_test_top.env.scb [[SCB]] MATCH burstid=1569 Core=0 Op=0x6 Exp=0x8e Act=0x8e
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62725: uvm_test_top.env.scb [[SCB]] MATCH burstid=1567 Core=2 Op=0x5 Exp=0x40 Act=0x40
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62755: uvm_test_top.env.scb [[SCB]] MATCH burstid=1568 Core=3 Op=0x6 Exp=0x5d Act=0x5d
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62795: uvm_test_top.env.scb [[SCB]] MATCH burstid=1569 Core=0 Op=0x6 Exp=0x33 Act=0x33
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 62845: uvm_test_top.env.scb [[SCB]] MATCH burstid=1570 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62875: uvm_test_top.env.scb [[SCB]] MATCH burstid=1571 Core=2 Op=0x6 Exp=0x49 Act=0x49
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62925: uvm_test_top.env.scb [[SCB]] MATCH burstid=1572 Core=3 Op=0x5 Exp=0x8f Act=0x8f
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62955: uvm_test_top.env.scb [[SCB]] MATCH burstid=1573 Core=0 Op=0x6 Exp=0xfa Act=0xfa
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62875: uvm_test_top.env.scb [[SCB]] MATCH burstid=1571 Core=2 Op=0x6 Exp=0x65 Act=0x65
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62925: uvm_test_top.env.scb [[SCB]] MATCH burstid=1572 Core=3 Op=0x5 Exp=0x5d Act=0x5d
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 62955: uvm_test_top.env.scb [[SCB]] MATCH burstid=1573 Core=0 Op=0x6 Exp=0x30 Act=0x30
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63005: uvm_test_top.env.scb [[SCB]] MATCH burstid=1574 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63045: uvm_test_top.env.scb [[SCB]] MATCH burstid=1575 Core=2 Op=0x5 Exp=0x49 Act=0x49
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63045: uvm_test_top.env.scb [[SCB]] MATCH burstid=1575 Core=2 Op=0x5 Exp=0x65 Act=0x65
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63085: uvm_test_top.env.scb [[SCB]] MATCH burstid=1576 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63115: uvm_test_top.env.scb [[SCB]] MATCH burstid=1577 Core=0 Op=0x6 Exp=0x38 Act=0x38
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63115: uvm_test_top.env.scb [[SCB]] MATCH burstid=1577 Core=0 Op=0x6 Exp=0xcc Act=0xcc
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63165: uvm_test_top.env.scb [[SCB]] MATCH burstid=1578 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63195: uvm_test_top.env.scb [[SCB]] MATCH burstid=1579 Core=2 Op=0x6 Exp=0xce Act=0xce
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63235: uvm_test_top.env.scb [[SCB]] MATCH burstid=1580 Core=3 Op=0x6 Exp=0x99 Act=0x99
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63275: uvm_test_top.env.scb [[SCB]] MATCH burstid=1581 Core=0 Op=0x6 Exp=0xe3 Act=0xe3
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63195: uvm_test_top.env.scb [[SCB]] MATCH burstid=1579 Core=2 Op=0x6 Exp=0x24 Act=0x24
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63235: uvm_test_top.env.scb [[SCB]] MATCH burstid=1580 Core=3 Op=0x6 Exp=0x12 Act=0x12
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63275: uvm_test_top.env.scb [[SCB]] MATCH burstid=1581 Core=0 Op=0x6 Exp=0x8b Act=0x8b
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63325: uvm_test_top.env.scb [[SCB]] MATCH burstid=1582 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63365: uvm_test_top.env.scb [[SCB]] MATCH burstid=1583 Core=2 Op=0x5 Exp=0xce Act=0xce
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63405: uvm_test_top.env.scb [[SCB]] MATCH burstid=1584 Core=3 Op=0x5 Exp=0x99 Act=0x99
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63435: uvm_test_top.env.scb [[SCB]] MATCH burstid=1585 Core=0 Op=0x6 Exp=0xfb Act=0xfb
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63365: uvm_test_top.env.scb [[SCB]] MATCH burstid=1583 Core=2 Op=0x5 Exp=0x24 Act=0x24
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63405: uvm_test_top.env.scb [[SCB]] MATCH burstid=1584 Core=3 Op=0x5 Exp=0x12 Act=0x12
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63435: uvm_test_top.env.scb [[SCB]] MATCH burstid=1585 Core=0 Op=0x6 Exp=0xd8 Act=0xd8
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63485: uvm_test_top.env.scb [[SCB]] MATCH burstid=1586 Core=1 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63515: uvm_test_top.env.scb [[SCB]] MATCH burstid=1587 Core=2 Op=0x6 Exp=0x4d Act=0x4d
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63515: uvm_test_top.env.scb [[SCB]] MATCH burstid=1587 Core=2 Op=0x6 Exp=0x8f Act=0x8f
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63565: uvm_test_top.env.scb [[SCB]] MATCH burstid=1588 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63595: uvm_test_top.env.scb [[SCB]] MATCH burstid=1589 Core=0 Op=0x6 Exp=0x12 Act=0x12
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63595: uvm_test_top.env.scb [[SCB]] MATCH burstid=1589 Core=0 Op=0x6 Exp=0x6f Act=0x6f
 # UVM_INFO UVM_TB/sequence.sv(102) @ 63625: uvm_test_top.env.core_agnt_0.seqr@@seq [SEQ] WRITE-ONLY sequence completed
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63645: uvm_test_top.env.scb [[SCB]] MATCH burstid=1590 Core=1 Op=0x5 Exp=0x00 Act=0x00
 # UVM_INFO UVM_TB/sequence.sv(72) @ 63665: uvm_test_top.env.core_agnt_1.seqr@@seq [SEQ] READ-ONLY sequence completed
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63685: uvm_test_top.env.scb [[SCB]] MATCH burstid=1591 Core=2 Op=0x5 Exp=0x4d Act=0x4d
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63685: uvm_test_top.env.scb [[SCB]] MATCH burstid=1591 Core=2 Op=0x5 Exp=0x8f Act=0x8f
 # UVM_INFO UVM_TB/sequence.sv(157) @ 63705: uvm_test_top.env.core_agnt_2.seqr@@seq [SEQ] WRITE-READ sequence completed
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63715: uvm_test_top.env.scb [[SCB]] MATCH burstid=1592 Core=3 Op=0x6 Exp=0x39 Act=0x39
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63795: uvm_test_top.env.scb [[SCB]] MATCH burstid=1593 Core=3 Op=0x5 Exp=0x39 Act=0x39
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63715: uvm_test_top.env.scb [[SCB]] MATCH burstid=1592 Core=3 Op=0x6 Exp=0x43 Act=0x43
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63795: uvm_test_top.env.scb [[SCB]] MATCH burstid=1593 Core=3 Op=0x5 Exp=0x43 Act=0x43
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 63865: uvm_test_top.env.scb [[SCB]] MATCH burstid=1594 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63925: uvm_test_top.env.scb [[SCB]] MATCH burstid=1595 Core=3 Op=0x6 Exp=0xdf Act=0xdf
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64005: uvm_test_top.env.scb [[SCB]] MATCH burstid=1596 Core=3 Op=0x5 Exp=0xdf Act=0xdf
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 63925: uvm_test_top.env.scb [[SCB]] MATCH burstid=1595 Core=3 Op=0x6 Exp=0x39 Act=0x39
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64005: uvm_test_top.env.scb [[SCB]] MATCH burstid=1596 Core=3 Op=0x5 Exp=0x39 Act=0x39
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 64075: uvm_test_top.env.scb [[SCB]] MATCH burstid=1597 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64135: uvm_test_top.env.scb [[SCB]] MATCH burstid=1598 Core=3 Op=0x6 Exp=0x71 Act=0x71
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64215: uvm_test_top.env.scb [[SCB]] MATCH burstid=1599 Core=3 Op=0x5 Exp=0x71 Act=0x71
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64135: uvm_test_top.env.scb [[SCB]] MATCH burstid=1598 Core=3 Op=0x6 Exp=0xc6 Act=0xc6
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64215: uvm_test_top.env.scb [[SCB]] MATCH burstid=1599 Core=3 Op=0x5 Exp=0xc6 Act=0xc6
 # UVM_INFO UVM_TB/scoreboard.sv(74) @ 64285: uvm_test_top.env.scb [[SCB]] MATCH burstid=1600 Core=3 Op=0x5 Exp=0x00 Act=0x00
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64345: uvm_test_top.env.scb [[SCB]] MATCH burstid=1601 Core=3 Op=0x6 Exp=0x97 Act=0x97
-# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64425: uvm_test_top.env.scb [[SCB]] MATCH burstid=1602 Core=3 Op=0x5 Exp=0x97 Act=0x97
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64345: uvm_test_top.env.scb [[SCB]] MATCH burstid=1601 Core=3 Op=0x6 Exp=0xb6 Act=0xb6
+# UVM_INFO UVM_TB/scoreboard.sv(74) @ 64425: uvm_test_top.env.scb [[SCB]] MATCH burstid=1602 Core=3 Op=0x5 Exp=0xb6 Act=0xb6
 # UVM_INFO UVM_TB/sequence.sv(219) @ 64445: uvm_test_top.env.core_agnt_3.seqr@@seq [SEQ] READ-WRITE-READ sequence completed
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 64445: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # UVM_INFO UVM_TB/driver.sv(132) @ 64445: uvm_test_top.env.core_agnt_0.drv [DRIVER_REPORT] Core 0: Total transactions driven = 398
@@ -2425,33 +2425,30 @@
 # Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2025.2_1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
 #  coverage save doc/mp_coverage_test.ucdb
 #  quit -sim
-# End time: 16:20:38 on Mar 06,2026, Elapsed time: 0:00:29
-# Errors: 0, Warnings: 1
-# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is esmaeil@CAD37.
-# ** Warning: (vlib-34) Library already exists at "work".
+# End time: 17:31:43 on Mar 06,2026, Elapsed time: 0:00:26
 # Errors: 0, Warnings: 1
 # QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
-# Start time: 16:20:38 on Mar 06,2026
+# Start time: 17:31:43 on Mar 06,2026
 # vlog -reportprogress 300 -sv -suppress 2583 "+incdir+UVM_TB" UVM_TB/interface.sv 
 # ** Note: (vlog-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # -- Compiling interface mp_intf
 # 
 # Top level modules:
 # 	--none--
-# End time: 16:20:38 on Mar 06,2026, Elapsed time: 0:00:00
+# End time: 17:31:43 on Mar 06,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
-# Start time: 16:20:38 on Mar 06,2026
+# Start time: 17:31:44 on Mar 06,2026
 # vlog -reportprogress 300 -sv -suppress 2583 "+cover=bcst" "+incdir+UVM_TB" rtl/mp_dut.sv 
 # ** Note: (vlog-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # -- Compiling module mp_dut
 # 
 # Top level modules:
 # 	mp_dut
-# End time: 16:20:39 on Mar 06,2026, Elapsed time: 0:00:01
+# End time: 17:31:44 on Mar 06,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
-# Start time: 16:20:39 on Mar 06,2026
+# Start time: 17:31:44 on Mar 06,2026
 # vlog -reportprogress 300 -sv -suppress 2583 "+cover=bcst" "+incdir+UVM_TB" UVM_TB/tb_top.sv 
 # ** Note: (vlog-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # ** Note: (vlog-2286) UVM_TB/tb_top.sv(8): Using implicit +incdir+C:/questasim64_2025.2_1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
@@ -2462,5 +2459,5 @@
 # 
 # Top level modules:
 # 	tb_top
-# End time: 16:20:39 on Mar 06,2026, Elapsed time: 0:00:00
+# End time: 17:31:44 on Mar 06,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
