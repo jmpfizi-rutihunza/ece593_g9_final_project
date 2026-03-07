@@ -1,6 +1,8 @@
+// ============================================================
 // ECE-593 Milestone 5 — Bug Injection Scenario #2
 // BUG: SHR/SHL shift directions swapped
-
+// QuestaSim 2025.2.1 compatible
+// ============================================================
 
 module mp_dut #(
     parameter AW = 11,
@@ -31,17 +33,13 @@ module mp_dut #(
 
     assign gnt = req;
 
-    // Memory init — separate initial block (QuestaSim compatible)
-    initial begin
-        for (int i = 0; i < (1<<AW); i++) mem[i] = '0;
-    end
-
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             p_valid     <= 1'b0;
             data_out    <= '0;
             rvalid      <= 1'b0;
             core_id_out <= '0;
+            for (int i = 0; i < (1<<AW); i++) mem[i] <= '0;
         end else begin
             p_valid <= 1'b0;
             if (req && gnt) begin
