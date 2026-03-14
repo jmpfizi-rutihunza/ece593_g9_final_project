@@ -1,6 +1,6 @@
 # ** Note: (vsim-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
-# vsim -c -voptargs="+acc" -coverage -sv_seed random tb_top "+UVM_TESTNAME=mp_bug2_test" "+UVM_VERBOSITY=UVM_LOW" -l doc/bug2_test.log -do "run -all; coverage save doc/bug2_test.ucdb; quit -sim" 
-# Start time: 17:32:35 on Mar 06,2026
+# vsim -c -voptargs="+acc" -coverage -sv_seed random -onfinish stop tb_top "+UVM_TESTNAME=mp_bug2_test" "+UVM_VERBOSITY=UVM_LOW" -l doc/bug2_test.log -do "run -all; coverage save doc/bug2_test.ucdb; quit -sim" 
+# Start time: 19:22:32 on Mar 13,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
 # ** Note: (vopt-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
@@ -14,7 +14,7 @@
 # Loading work.mp_intf(fast__2)
 # Loading work.mp_dut(fast)
 # Loading C:/questasim64_2025.2_1/uvm-1.1d\win64\uvm_dpi.dll
-# Sv_Seed = 2075149041
+# Sv_Seed = 1605932953
 # run -all
 # ----------------------------------------------------------------
 # UVM-1.1d
@@ -859,96 +859,126 @@
 # -  
 # ----------------------------------
 # 
-# UVM_INFO UVM_TB/bug_tests.sv(188) @ 0: uvm_test_top [BUG2_TEST] === BUG INJECTION TEST 2: SHR/SHL directions swapped ===
-# UVM_INFO UVM_TB/bug_tests.sv(189) @ 0: uvm_test_top [BUG2_TEST] Expected: SCB_MISMATCH on ALL shift transactions
-# UVM_INFO UVM_TB/bug_tests.sv(72) @ 0: uvm_test_top.env.core_agnt_0.seqr@@seq [BUG2_SEQ] Starting Directed SHIFT Test (Bug 2 Detection)
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 85: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=1 Core=0 Op=0x7 Exp=0x7f Act=0xfe
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 155: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=2 Core=0 Op=0x7 Exp=0x40 Act=0x00
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 225: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=3 Core=0 Op=0x7 Exp=0x55 Act=0x54
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 295: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=4 Core=0 Op=0x7 Exp=0x00 Act=0x02
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 365: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=5 Core=0 Op=0x7 Exp=0x08 Act=0x20
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 435: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=6 Core=0 Op=0x7 Exp=0x2d Act=0xb4
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 505: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=7 Core=0 Op=0x8 Exp=0x02 Act=0x00
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 575: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=8 Core=0 Op=0x8 Exp=0x04 Act=0x01
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 645: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=9 Core=0 Op=0x8 Exp=0xfe Act=0x3f
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 715: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=10 Core=0 Op=0x8 Exp=0xaa Act=0x2a
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 785: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=11 Core=0 Op=0x8 Exp=0x1e Act=0x07
-# UVM_ERROR UVM_TB/scoreboard.sv(78) @ 855: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=12 Core=0 Op=0x8 Exp=0x54 Act=0x55
-# UVM_INFO UVM_TB/bug_tests.sv(94) @ 875: uvm_test_top.env.core_agnt_0.seqr@@seq [BUG2_SEQ] SHIFT Directed Sequence Done
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 1075: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-# UVM_INFO UVM_TB/driver.sv(132) @ 1075: uvm_test_top.env.core_agnt_0.drv [DRIVER_REPORT] Core 0: Total transactions driven = 12
-# UVM_INFO UVM_TB/driver.sv(132) @ 1075: uvm_test_top.env.core_agnt_1.drv [DRIVER_REPORT] Core 1: Total transactions driven = 0
-# UVM_INFO UVM_TB/driver.sv(132) @ 1075: uvm_test_top.env.core_agnt_2.drv [DRIVER_REPORT] Core 2: Total transactions driven = 0
-# UVM_INFO UVM_TB/driver.sv(132) @ 1075: uvm_test_top.env.core_agnt_3.drv [DRIVER_REPORT] Core 3: Total transactions driven = 0
-# UVM_INFO UVM_TB/coverage.sv(91) @ 1075: uvm_test_top.env.cov [COVERAGE] ========================================
-# UVM_INFO UVM_TB/coverage.sv(92) @ 1075: uvm_test_top.env.cov [COVERAGE]        FUNCTIONAL COVERAGE REPORT       
-# UVM_INFO UVM_TB/coverage.sv(93) @ 1075: uvm_test_top.env.cov [COVERAGE] ========================================
-# UVM_INFO UVM_TB/coverage.sv(94) @ 1075: uvm_test_top.env.cov [COVERAGE]   Total Coverage     : 34.69%
-# UVM_INFO UVM_TB/coverage.sv(95) @ 1075: uvm_test_top.env.cov [COVERAGE]   CP_CORE            : 25.00%
-# UVM_INFO UVM_TB/coverage.sv(96) @ 1075: uvm_test_top.env.cov [COVERAGE]   CP_OPCODE          : 14.29%
-# UVM_INFO UVM_TB/coverage.sv(97) @ 1075: uvm_test_top.env.cov [COVERAGE]   CP_ADDR            : 100.00%
-# UVM_INFO UVM_TB/coverage.sv(98) @ 1075: uvm_test_top.env.cov [COVERAGE]   CROSS_CORE_OP      : 3.57%
-# UVM_INFO UVM_TB/coverage.sv(99) @ 1075: uvm_test_top.env.cov [COVERAGE]   CROSS_MEM_REGION   : 0.00%
-# UVM_INFO UVM_TB/coverage.sv(100) @ 1075: uvm_test_top.env.cov [COVERAGE] ========================================
-# UVM_INFO UVM_TB/scoreboard.sv(87) @ 1075: uvm_test_top.env.scb [[SCB]] ========================================
-# UVM_INFO UVM_TB/scoreboard.sv(88) @ 1075: uvm_test_top.env.scb [[SCB]]        SCOREBOARD FINAL REPORT          
-# UVM_INFO UVM_TB/scoreboard.sv(89) @ 1075: uvm_test_top.env.scb [[SCB]] ========================================
-# UVM_INFO UVM_TB/scoreboard.sv(90) @ 1075: uvm_test_top.env.scb [[SCB]]   Total Transactions : 12
-# UVM_INFO UVM_TB/scoreboard.sv(91) @ 1075: uvm_test_top.env.scb [[SCB]]   Total Matches      : 0
-# UVM_INFO UVM_TB/scoreboard.sv(92) @ 1075: uvm_test_top.env.scb [[SCB]]   Total Errors       : 12
-# UVM_ERROR UVM_TB/scoreboard.sv(96) @ 1075: uvm_test_top.env.scb [[SCB]]   RESULT: 12 TESTS FAILED
-# UVM_INFO UVM_TB/scoreboard.sv(97) @ 1075: uvm_test_top.env.scb [[SCB]] ========================================
+# UVM_INFO UVM_TB/bug_tests.sv(199) @ 0: uvm_test_top [BUG2_TEST] === BUG INJECTION TEST 2: SHR/SHL directions swapped ===
+# UVM_INFO UVM_TB/bug_tests.sv(200) @ 0: uvm_test_top [BUG2_TEST] Expected: SCB_MISMATCH on ALL shift transactions (all 4 cores)
+# UVM_INFO UVM_TB/bug_tests.sv(72) @ 0: uvm_test_top.env.core_agnt_0.seqr@@seq0 [BUG2_SEQ] Starting Directed SHIFT Test (Bug 2 Detection)
+# UVM_INFO UVM_TB/bug_tests.sv(72) @ 0: uvm_test_top.env.core_agnt_1.seqr@@seq1 [BUG2_SEQ] Starting Directed SHIFT Test (Bug 2 Detection)
+# UVM_INFO UVM_TB/bug_tests.sv(72) @ 0: uvm_test_top.env.core_agnt_2.seqr@@seq2 [BUG2_SEQ] Starting Directed SHIFT Test (Bug 2 Detection)
+# UVM_INFO UVM_TB/bug_tests.sv(72) @ 0: uvm_test_top.env.core_agnt_3.seqr@@seq3 [BUG2_SEQ] Starting Directed SHIFT Test (Bug 2 Detection)
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 65: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=1 Core=2 Op=0x7 Exp=0x7f Act=0xfe
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 105: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=2 Core=3 Op=0x7 Exp=0x7f Act=0xfe
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 145: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=3 Core=0 Op=0x7 Exp=0x7f Act=0xfe
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 185: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=4 Core=1 Op=0x7 Exp=0x7f Act=0xfe
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 225: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=5 Core=2 Op=0x7 Exp=0x40 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 265: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=6 Core=3 Op=0x7 Exp=0x40 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 305: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=7 Core=0 Op=0x7 Exp=0x40 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 345: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=8 Core=1 Op=0x7 Exp=0x40 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 385: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=9 Core=2 Op=0x7 Exp=0x55 Act=0x54
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 425: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=10 Core=3 Op=0x7 Exp=0x55 Act=0x54
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 465: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=11 Core=0 Op=0x7 Exp=0x55 Act=0x54
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 505: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=12 Core=1 Op=0x7 Exp=0x55 Act=0x54
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 545: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=13 Core=2 Op=0x7 Exp=0x00 Act=0x02
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 585: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=14 Core=3 Op=0x7 Exp=0x00 Act=0x02
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 625: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=15 Core=0 Op=0x7 Exp=0x00 Act=0x02
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 665: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=16 Core=1 Op=0x7 Exp=0x00 Act=0x02
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 705: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=17 Core=2 Op=0x7 Exp=0x08 Act=0x20
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 745: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=18 Core=3 Op=0x7 Exp=0x08 Act=0x20
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 785: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=19 Core=0 Op=0x7 Exp=0x08 Act=0x20
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 825: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=20 Core=1 Op=0x7 Exp=0x08 Act=0x20
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 865: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=21 Core=2 Op=0x7 Exp=0x2d Act=0xb4
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 905: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=22 Core=3 Op=0x7 Exp=0x2d Act=0xb4
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 945: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=23 Core=0 Op=0x7 Exp=0x2d Act=0xb4
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 985: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=24 Core=1 Op=0x7 Exp=0x2d Act=0xb4
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1025: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=25 Core=2 Op=0x8 Exp=0x02 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1065: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=26 Core=3 Op=0x8 Exp=0x02 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1105: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=27 Core=0 Op=0x8 Exp=0x02 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1145: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=28 Core=1 Op=0x8 Exp=0x02 Act=0x00
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1185: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=29 Core=2 Op=0x8 Exp=0x04 Act=0x01
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1225: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=30 Core=3 Op=0x8 Exp=0x04 Act=0x01
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1265: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=31 Core=0 Op=0x8 Exp=0x04 Act=0x01
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1305: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=32 Core=1 Op=0x8 Exp=0x04 Act=0x01
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1345: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=33 Core=2 Op=0x8 Exp=0xfe Act=0x3f
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1385: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=34 Core=3 Op=0x8 Exp=0xfe Act=0x3f
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1425: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=35 Core=0 Op=0x8 Exp=0xfe Act=0x3f
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1465: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=36 Core=1 Op=0x8 Exp=0xfe Act=0x3f
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1505: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=37 Core=2 Op=0x8 Exp=0xaa Act=0x2a
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1545: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=38 Core=3 Op=0x8 Exp=0xaa Act=0x2a
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1585: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=39 Core=0 Op=0x8 Exp=0xaa Act=0x2a
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1625: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=40 Core=1 Op=0x8 Exp=0xaa Act=0x2a
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1665: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=41 Core=2 Op=0x8 Exp=0x1e Act=0x07
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1705: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=42 Core=3 Op=0x8 Exp=0x1e Act=0x07
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1745: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=43 Core=0 Op=0x8 Exp=0x1e Act=0x07
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1785: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=44 Core=1 Op=0x8 Exp=0x1e Act=0x07
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1825: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=45 Core=2 Op=0x8 Exp=0x54 Act=0x55
+# UVM_INFO UVM_TB/bug_tests.sv(94) @ 1845: uvm_test_top.env.core_agnt_2.seqr@@seq2 [BUG2_SEQ] SHIFT Directed Sequence Done
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1865: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=46 Core=3 Op=0x8 Exp=0x54 Act=0x55
+# UVM_INFO UVM_TB/bug_tests.sv(94) @ 1885: uvm_test_top.env.core_agnt_3.seqr@@seq3 [BUG2_SEQ] SHIFT Directed Sequence Done
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1905: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=47 Core=0 Op=0x8 Exp=0x54 Act=0x55
+# UVM_INFO UVM_TB/bug_tests.sv(94) @ 1925: uvm_test_top.env.core_agnt_0.seqr@@seq0 [BUG2_SEQ] SHIFT Directed Sequence Done
+# UVM_ERROR UVM_TB/scoreboard.sv(71) @ 1945: uvm_test_top.env.scb [[SCB]] MISMATCH burstid=48 Core=1 Op=0x8 Exp=0x54 Act=0x55
+# UVM_INFO UVM_TB/bug_tests.sv(94) @ 1965: uvm_test_top.env.core_agnt_1.seqr@@seq1 [BUG2_SEQ] SHIFT Directed Sequence Done
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 2165: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO UVM_TB/driver.sv(132) @ 2165: uvm_test_top.env.core_agnt_0.drv [DRIVER_REPORT] Core 0: Total transactions driven = 12
+# UVM_INFO UVM_TB/driver.sv(132) @ 2165: uvm_test_top.env.core_agnt_1.drv [DRIVER_REPORT] Core 1: Total transactions driven = 12
+# UVM_INFO UVM_TB/driver.sv(132) @ 2165: uvm_test_top.env.core_agnt_2.drv [DRIVER_REPORT] Core 2: Total transactions driven = 12
+# UVM_INFO UVM_TB/driver.sv(132) @ 2165: uvm_test_top.env.core_agnt_3.drv [DRIVER_REPORT] Core 3: Total transactions driven = 12
+# UVM_INFO UVM_TB/scoreboard.sv(85) @ 2165: uvm_test_top.env.scb [[SCB]] ========================================
+# UVM_INFO UVM_TB/scoreboard.sv(86) @ 2165: uvm_test_top.env.scb [[SCB]]        SCOREBOARD FINAL REPORT          
+# UVM_INFO UVM_TB/scoreboard.sv(87) @ 2165: uvm_test_top.env.scb [[SCB]] ========================================
+# UVM_INFO UVM_TB/scoreboard.sv(88) @ 2165: uvm_test_top.env.scb [[SCB]]   Total Transactions : 48
+# UVM_INFO UVM_TB/scoreboard.sv(89) @ 2165: uvm_test_top.env.scb [[SCB]]   Total Matches      : 0
+# UVM_INFO UVM_TB/scoreboard.sv(90) @ 2165: uvm_test_top.env.scb [[SCB]]   Total Errors       : 48
+# UVM_INFO UVM_TB/scoreboard.sv(94) @ 2165: uvm_test_top.env.scb [[SCB]]   RESULT: 48 TESTS FAILED
+# UVM_INFO UVM_TB/scoreboard.sv(95) @ 2165: uvm_test_top.env.scb [[SCB]] ========================================
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :  121
+# UVM_INFO :  118
 # UVM_WARNING :    0
-# UVM_ERROR :   13
+# UVM_ERROR :   48
 # UVM_FATAL :    0
 # ** Report counts by id
-# [BUG2_SEQ]     2
+# [BUG2_SEQ]     8
 # [BUG2_TEST]     2
 # [CFGPRT]    91
-# [COVERAGE]    10
 # [DRIVER_REPORT]     4
 # [ENV]     1
 # [RNTST]     1
 # [TEST_DONE]     1
 # [TOPOLOGY]     1
 # [UVMTOP]     1
-# [[SCB]]    20
+# [[SCB]]    56
 # ** Note: $finish    : C:/questasim64_2025.2_1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 1075 ns  Iteration: 55  Instance: /tb_top
-# 1
+#    Time: 2165 ns  Iteration: 55  Instance: /tb_top
 # Break in Task uvm_pkg/uvm_root::run_test at C:/questasim64_2025.2_1/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
 #  coverage save doc/bug2_test.ucdb
 #  quit -sim
-# End time: 17:32:59 on Mar 06,2026, Elapsed time: 0:00:24
+# End time: 19:22:59 on Mar 13,2026, Elapsed time: 0:00:27
 # Errors: 0, Warnings: 1
 # QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
-# Start time: 17:32:59 on Mar 06,2026
+# Start time: 19:23:00 on Mar 13,2026
 # vlog -reportprogress 300 -sv -suppress 2583 "+incdir+UVM_TB" UVM_TB/interface.sv 
 # ** Note: (vlog-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # -- Compiling interface mp_intf
 # 
 # Top level modules:
 # 	--none--
-# End time: 17:32:59 on Mar 06,2026, Elapsed time: 0:00:00
+# End time: 19:23:00 on Mar 13,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
-# Start time: 17:33:00 on Mar 06,2026
-# vlog -reportprogress 300 -sv -suppress 2583 "+cover=bcst" "+incdir+UVM_TB" rtl/mp_dut_bug3.sv 
+# Start time: 19:23:00 on Mar 13,2026
+# vlog -reportprogress 300 -sv -suppress 2583 "+cover=bces" "+define+BUG_SELECT_3" "+incdir+UVM_TB" rtl/mp_dut_demo.sv 
 # ** Note: (vlog-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # -- Compiling module mp_dut
 # 
 # Top level modules:
 # 	mp_dut
-# End time: 17:33:00 on Mar 06,2026, Elapsed time: 0:00:00
+# End time: 19:23:00 on Mar 13,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # QuestaSim-64 vlog 2025.2_1 Compiler 2025.06 Jun 25 2025
-# Start time: 17:33:00 on Mar 06,2026
-# vlog -reportprogress 300 -sv -suppress 2583 "+cover=bcst" "+incdir+UVM_TB" UVM_TB/tb_top_bug.sv 
+# Start time: 19:23:00 on Mar 13,2026
+# vlog -reportprogress 300 -sv -suppress 2583 "+cover=bces" "+incdir+UVM_TB" UVM_TB/tb_top_bug.sv 
 # ** Note: (vlog-220) 'C:/questasim64_2025.2_1/win64/../modelsim.ini' is used as the ini file.
 # ** Note: (vlog-2286) UVM_TB/tb_top_bug.sv(8): Using implicit +incdir+C:/questasim64_2025.2_1/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
 # -- Compiling package tb_top_bug_sv_unit
@@ -958,5 +988,5 @@
 # 
 # Top level modules:
 # 	tb_top
-# End time: 17:33:00 on Mar 06,2026, Elapsed time: 0:00:00
+# End time: 19:23:01 on Mar 13,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
