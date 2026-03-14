@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////
 // ECE-593 Milestone 5 — Bug Injection Test Suite
-// QuestaSim 2025.2.1 compatible
+// QuestaSim 2025.2_1 compatible
 //////////////////////////////////////////////////
 
 
@@ -148,7 +148,7 @@ endclass
 
 
 // ==============================================================
-// BUG 1 TEST
+// BUG 1 TEST — directed ADD on all 4 cores in parallel
 // ==============================================================
 
 class mp_bug1_test extends mp_test;
@@ -159,12 +159,23 @@ class mp_bug1_test extends mp_test;
     endfunction
 
     task run_phase(uvm_phase phase);
-        mp_add_directed_seq seq;
+        mp_add_directed_seq seq0, seq1, seq2, seq3;
         phase.raise_objection(this);
         `uvm_info("BUG1_TEST", "=== BUG INJECTION TEST 1: ADD returns SUB ===", UVM_LOW)
-        `uvm_info("BUG1_TEST", "Expected: SCB_MISMATCH on ALL ADD transactions", UVM_LOW)
-        seq = mp_add_directed_seq::type_id::create("seq");
-        seq.start(env.core_agnt[0].seqr);
+        `uvm_info("BUG1_TEST", "Expected: SCB_MISMATCH on ALL ADD transactions (all 4 cores)", UVM_LOW)
+
+        seq0 = mp_add_directed_seq::type_id::create("seq0");
+        seq1 = mp_add_directed_seq::type_id::create("seq1");
+        seq2 = mp_add_directed_seq::type_id::create("seq2");
+        seq3 = mp_add_directed_seq::type_id::create("seq3");
+
+        fork
+            seq0.start(env.core_agnt[0].seqr);
+            seq1.start(env.core_agnt[1].seqr);
+            seq2.start(env.core_agnt[2].seqr);
+            seq3.start(env.core_agnt[3].seqr);
+        join
+
         #200ns;
         phase.drop_objection(this);
     endtask
@@ -172,7 +183,7 @@ endclass
 
 
 // ==============================================================
-// BUG 2 TEST
+// BUG 2 TEST — directed SHIFT on all 4 cores in parallel
 // ==============================================================
 
 class mp_bug2_test extends mp_test;
@@ -183,12 +194,23 @@ class mp_bug2_test extends mp_test;
     endfunction
 
     task run_phase(uvm_phase phase);
-        mp_shift_directed_seq seq;
+        mp_shift_directed_seq seq0, seq1, seq2, seq3;
         phase.raise_objection(this);
         `uvm_info("BUG2_TEST", "=== BUG INJECTION TEST 2: SHR/SHL directions swapped ===", UVM_LOW)
-        `uvm_info("BUG2_TEST", "Expected: SCB_MISMATCH on ALL shift transactions", UVM_LOW)
-        seq = mp_shift_directed_seq::type_id::create("seq");
-        seq.start(env.core_agnt[0].seqr);
+        `uvm_info("BUG2_TEST", "Expected: SCB_MISMATCH on ALL shift transactions (all 4 cores)", UVM_LOW)
+
+        seq0 = mp_shift_directed_seq::type_id::create("seq0");
+        seq1 = mp_shift_directed_seq::type_id::create("seq1");
+        seq2 = mp_shift_directed_seq::type_id::create("seq2");
+        seq3 = mp_shift_directed_seq::type_id::create("seq3");
+
+        fork
+            seq0.start(env.core_agnt[0].seqr);
+            seq1.start(env.core_agnt[1].seqr);
+            seq2.start(env.core_agnt[2].seqr);
+            seq3.start(env.core_agnt[3].seqr);
+        join
+
         #200ns;
         phase.drop_objection(this);
     endtask
@@ -196,7 +218,7 @@ endclass
 
 
 // ==============================================================
-// BUG 3 TEST
+// BUG 3 TEST — STORE->LOAD integrity on all 4 cores in parallel
 // ==============================================================
 
 class mp_bug3_test extends mp_test;
@@ -207,13 +229,28 @@ class mp_bug3_test extends mp_test;
     endfunction
 
     task run_phase(uvm_phase phase);
-        mp_mem_integrity_seq seq;
+        mp_mem_integrity_seq seq0, seq1, seq2, seq3;
         phase.raise_objection(this);
         `uvm_info("BUG3_TEST", "=== BUG INJECTION TEST 3: STORE never writes to memory ===", UVM_LOW)
-        `uvm_info("BUG3_TEST", "Expected: SCB_MISMATCH on ALL LOAD-after-STORE transactions", UVM_LOW)
-        seq = mp_mem_integrity_seq::type_id::create("seq");
-        seq.num_pairs = 20;
-        seq.start(env.core_agnt[0].seqr);
+        `uvm_info("BUG3_TEST", "Expected: SCB_MISMATCH on ALL LOAD-after-STORE transactions (all 4 cores)", UVM_LOW)
+
+        seq0 = mp_mem_integrity_seq::type_id::create("seq0");
+        seq1 = mp_mem_integrity_seq::type_id::create("seq1");
+        seq2 = mp_mem_integrity_seq::type_id::create("seq2");
+        seq3 = mp_mem_integrity_seq::type_id::create("seq3");
+
+        seq0.num_pairs = 20;
+        seq1.num_pairs = 20;
+        seq2.num_pairs = 20;
+        seq3.num_pairs = 20;
+
+        fork
+            seq0.start(env.core_agnt[0].seqr);
+            seq1.start(env.core_agnt[1].seqr);
+            seq2.start(env.core_agnt[2].seqr);
+            seq3.start(env.core_agnt[3].seqr);
+        join
+
         #200ns;
         phase.drop_objection(this);
     endtask

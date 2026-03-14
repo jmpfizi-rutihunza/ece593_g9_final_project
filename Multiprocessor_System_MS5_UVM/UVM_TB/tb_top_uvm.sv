@@ -1,58 +1,22 @@
-`timescale 1ns/1ps
+//////////////////////////////////
+//    ECE-593 Project           //
+//    Multiprocessor System     //
+//    Milestone 5 - UVM        //
+//    tb_top_uvm.sv             //
+//    NOTE: This file is a      //
+//    legacy wrapper kept for   //
+//    reference only. The       //
+//    active testbench top is   //
+//    tb_top_bug.sv             //
+//////////////////////////////////
 
-import uvm_pkg::*;
-`include "uvm_macros.svh"
-import mp_pkg::*;
+// This file has been superseded by tb_top_bug.sv which uses
+// mp_intf (4-core interface) and mp_dut_demo.sv (bug-switchable RTL).
+// tb_top_uvm.sv used the old single-core MS4 interface and is
+// not compatible with the MS5 DUT or run.do flow.
+// It is retained here for milestone history only.
 
-module tb_top_uvm;
+// Active testbench: UVM_TB/tb_top_bug.sv
+// Active RTL:       rtl/mp_dut_demo.sv
+// Run script:       UVM_TB/run.do
 
-  
-  // Clock
-  
-  bit clk;
-
-  initial clk = 0;
-  always #5 clk = ~clk;
-
-  
-  // Interface (same as MS2)
-  
-  intf vif(clk);
-
-  
-  // DUT (same mapping as MS2)
-  
-  mp_dut #(.AW(11), .DW(8)) dut (
-    .clk(clk),
-    .rst_n(vif.reset_n),
-
-    .core_id(vif.core_id),
-    .opcode(vif.opcode),
-    .req(vif.req),
-    .addr(vif.addr),
-    .A(vif.A),
-    .B(vif.B),
-    .we(vif.we),
-
-    .gnt(vif.gnt),
-
-    .rvalid(vif.rvalid),
-    .data_out(vif.data_out),
-    .core_id_out(vif.core_id_out)
-  );
-
-  
-  // Reset (ACTIVE LOW — same as MS2)
-  
-  initial begin
-    vif.reset_n = 0;
-    #20;
-    vif.reset_n = 1;
-  end
-
-  initial begin
-    uvm_config_db#(virtual intf)::set(null,"*","vif",vif);
-    run_test("mp_test");
-  end
-
-endmodule

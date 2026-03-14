@@ -1,18 +1,22 @@
+// ==============================================================
+//  ECE-593 Group 9 — Milestone 5
+//  mp_pkg.sv — UVM package (flat include, matches UVM_TB/ layout)
+// ==============================================================
+
 package mp_pkg;
-  import uvm_pkg::*;
-  `include "uvm_macros.svh"
+    import uvm_pkg::*;
+    `include "uvm_macros.svh"
 
-  `include "seq/mp_seq_item.sv"
-  `include "seq/mp_sequence.sv"
-
-  `include "agent/mp_driver.sv"
-  `include "agent/mp_req_monitor.sv"
-  `include "agent/mp_rsp_monitor.sv"
-  `include "agent/mp_agent.sv"
-
-  `include "env/mp_scoreboard.sv"
-  `include "env/mp_env.sv"
-
-  `include "test/mp_test.sv"
+    `include "sequence_item.sv"
+    `include "sequencer.sv"
+    `include "sequence.sv"
+    `include "driver.sv"
+    `include "monitor.sv"
+    `include "scoreboard.sv"
+    `include "coverage.sv"
+    `include "agent.sv"
+    `include "env.sv"
+    `include "test.sv"
+    `include "bug_tests.sv"
 
 endpackage
