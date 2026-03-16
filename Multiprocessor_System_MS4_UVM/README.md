@@ -25,7 +25,10 @@ The UVM testbench verifies:
 ## How to Run
 
 From `Multiprocessor_System_MS4_UVM/`:
+
+```
 do UVM_TB/run.do
+```
 
 Runs two tests:
 - mp_test — 90 directed transactions, validates basic handshaking
@@ -36,18 +39,23 @@ Reports are saved to `doc/`.
 ---
 
 ## UVM Architecture
+
+```
 Test
-└── Environment
-├── Agent
-│     ├── Sequencer
-│     ├── Driver
-│     ├── Request Monitor
-│     └── Response Monitor
-└── Scoreboard
+ └── Environment
+      ├── Agent
+      │     ├── Sequencer
+      │     ├── Driver
+      │     ├── Request Monitor
+      │     └── Response Monitor
+      └── Scoreboard
+```
 
 ---
 
 ## Directory Structure
+
+```
 Multiprocessor_System_MS4_UVM/
 ├── README.md
 ├── intf.sv                ← Top-level interface file
@@ -69,16 +77,17 @@ Multiprocessor_System_MS4_UVM/
 │   ├── test.sv            ← mp_test, mp_alu_test
 │   ├── tb_top.sv          ← Testbench top
 │   ├── tb_top_uvm.sv      ← Alternative top (legacy)
-│   ├── agent/             ← MS4 agent subfolder variants
-│   ├── env/               ← MS4 env subfolder variants
-│   └── test/              ← MS4 test subfolder variants
+│   ├── agent/             ← Agent subfolder variants
+│   ├── env/               ← Env subfolder variants
+│   └── test/              ← Test subfolder variants
 └── doc/
-├── Verification_Plan.pdf
-├── MS4_Report.pdf
-├── mp_test.log
-├── mp_alu_test.log
-├── func_cov_report_TOTAL.txt
-└── code_cov_report_TOTAL.txt
+    ├── Verification_Plan.pdf
+    ├── MS4_Report.pdf
+    ├── mp_test.log
+    ├── mp_alu_test.log
+    ├── func_cov_report_TOTAL.txt
+    └── code_cov_report_TOTAL.txt
+```
 
 ---
 
