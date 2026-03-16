@@ -8,7 +8,7 @@ Multiprocessor System
 
 ECE-593: Fundamentals of Pre-Silicon Validation
 Maseeh College of Engineering and Computer Science
-Winter 2025
+Winter 2026
 
 ## Instructor
 
@@ -32,30 +32,25 @@ The goal of this milestone is to validate:
 
 Generator-based processors are used instead of full instruction-level CPU cores to simplify early system-level validation.
 
-## Directory Structure
-
-```
-Multiprocessor_System_MS1_Trad/
+## Directory StructureMultiprocessor_System_MS1_Trad/
 ├── README.md
 ├── doc/
 │   ├── README.md
-│   └── ECE_593__Pre_Silicon_Validation.pdf
+│   ├── ECE_593_Verification_Plan.pdf
+│   └── ece593w26-Design_Specification.pdf
 ├── rtl/
 │   ├── README.md
 │   ├── generator.sv
 │   └── mp_top.sv
 └── TRAD_TB/
-    ├── README.md
-    ├── mp_top_tb.sv
-    └── run.do
-```
+├── README.md
+├── mp_top_tb.sv
+└── run.do
 
 ## How to Run Simulation
 
 1. Launch QuestaSim
-2. Navigate to the testbench directory:
+2. Navigate to the MS1 directory:
    cd Multiprocessor_System_MS1_Trad/TRAD_TB
 3. Run the simulation:
    do run.do
-
-
