@@ -1,85 +1,38 @@
-# UVM Testbench — Multiprocessor System
+# UVM Testbench — Milestone 4
 
-## Description
+This directory contains the UVM verification environment for the Multiprocessor System.
 
-This directory contains the Universal Verification Methodology (UVM) testbench used in Milestone-4.
+## How to Run
 
-The testbench verifies functional correctness of the Multiprocessor System using constrained-random stimulus and a scoreboard reference model.
+From `Multiprocessor_System_MS4_UVM/`:
+do UVM_TB/run.do
 
----
+## File Descriptions
 
-## File Overview
+| File             | Role                                                          |
+|------------------|---------------------------------------------------------------|
+| `run.do`         | Compiles and runs mp_test and mp_alu_test, saves coverage     |
+| `interface.sv`   | SystemVerilog interface connecting TB to DUT                  |
+| `mp_pkg.sv`      | Package that includes all UVM component files                 |
+| `sequence_item.sv` | Transaction object (opcode, addr, operands, data)           |
+| `sequence.sv`    | Sequence classes for generating transactions                  |
+| `sequencer.sv`   | Routes sequence items to driver                               |
+| `driver.sv`      | Converts transactions to DUT pin-level stimulus               |
+| `monitor.sv`     | Observes DUT signals and forwards to scoreboard               |
+| `agent.sv`       | Bundles sequencer, driver, and monitor                        |
+| `scoreboard.sv`  | Reference model with MATCH/MISMATCH checking                  |
+| `coverage.sv`    | Functional covergroup                                         |
+| `env.sv`         | Instantiates agent and scoreboard                             |
+| `test.sv`        | mp_test and mp_alu_test                                       |
+| `tb_top.sv`      | Testbench top module                                          |
+| `tb_top_uvm.sv`  | Alternative top (legacy reference)                            |
+| `agent/`         | Subfolder with alternative agent component files              |
+| `env/`           | Subfolder with alternative scoreboard file                    |
+| `test/`          | Subfolder with alternative test and sequence files            |
 
-### Top Level
+## Test Summary
 
-* **tb_top_uvm.sv**
-  Instantiates DUT and interface and starts UVM.
-
-* **mp_pkg.sv**
-  Package including all UVM components.
-
----
-
-### Sequence Layer
-
-* **mp_seq_item.sv**
-  Transaction object representing processor requests and responses.
-
----
-
-### Agent Layer
-
-* **mp_driver.sv**
-  Drives DUT inputs using sequence items.
-
-* **mp_req_monitor.sv**
-  Captures DUT request activity.
-
-* **mp_rsp_monitor.sv**
-  Captures DUT response activity.
-
----
-
-### Environment Layer
-
-* **mp_agent.sv**
-  Groups sequencer, driver, and monitors.
-
-* **mp_env.sv**
-  Instantiates agent and scoreboard.
-
-* **mp_scoreboard.sv**
-  Implements prediction and checking logic using per-core expected queues.
-
----
-
-### Test Layer
-
-* **mp_test.sv**
-  Builds the environment and starts sequences.
-
----
-
-## Data Flow
-
-Sequence → Driver → DUT → Monitors → Scoreboard
-
-The scoreboard predicts expected results from request transactions and compares them with DUT responses.
-
----
-
-## Logging
-
-The testbench uses UVM reporting macros:
-
-* uvm_info
-* uvm_warning
-* uvm_error
-
-Verbosity levels control transcript detail.
-
----
-
-## Notes
-
-The UVM testbench reuses the Milestone-2 verification strategy while introducing standardized UVM architecture.
+| Test         | Transactions | Errors | Purpose                              |
+|--------------|--------------|--------|--------------------------------------|
+| mp_test      | 90           | 0      | Basic handshake and connectivity     |
+| mp_alu_test  | 1000         | 0      | Full ALU stress, coverage closure    |
