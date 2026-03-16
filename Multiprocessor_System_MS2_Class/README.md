@@ -29,35 +29,41 @@ Milestone 2 built the core verification infrastructure. Milestone 3 expanded cov
 ---
 
 ## Directory Structure
+
+```
 Multiprocessor_System_MS2_Class/
 ├── README.md
 ├── rtl/
-│   └── mp_dut.sv          ← Design Under Test
+│   └── mp_dut.sv              ← Design Under Test
 ├── Class_TB/
-│   ├── transaction.sv     ← Transaction object
-│   ├── generator.sv       ← Constrained random stimulus
-│   ├── driver.sv          ← DUT pin-level driver
-│   ├── monitor_in.sv      ← Input monitor
-│   ├── monitor_out.sv     ← Output monitor
-│   ├── scoreboard.sv      ← Reference model + checker
-│   ├── coverage_collector.sv ← Functional coverage
-│   ├── environment.sv     ← Connects all components
-│   ├── intf.sv            ← SystemVerilog interface
-│   ├── tb_top.sv          ← Testbench top module
-│   └── run.do             ← Simulation script
+│   ├── transaction.sv         ← Transaction object
+│   ├── generator.sv           ← Constrained random stimulus
+│   ├── driver.sv              ← DUT pin-level driver
+│   ├── monitor_in.sv          ← Input monitor
+│   ├── monitor_out.sv         ← Output monitor
+│   ├── scoreboard.sv          ← Reference model + checker
+│   ├── coverage_collector.sv  ← Functional coverage
+│   ├── environment.sv         ← Connects all components
+│   ├── intf.sv                ← SystemVerilog interface
+│   ├── tb_top.sv              ← Testbench top module
+│   └── run.do                 ← Simulation script
 └── doc/
-├── Verification_Plan.pdf
-├── Class-Based_TB_Implementation_Report.pdf
-├── functional_coverage_report.txt
-└── transcript
+    ├── Verification_Plan.pdf
+    ├── Class-Based_TB_Implementation_Report.pdf
+    ├── functional_coverage_report.txt
+    └── transcript
+```
 
 ---
 
 ## How to Run
 
 From `Multiprocessor_System_MS2_Class/`:
+
+```
 vdel -lib work -all
 vlib work
 vlog -sv -mfcu -cover bcesf rtl/mp_dut.sv Class_TB/*.sv
 vsim -coverage work.tb_top
 run -all
+```
