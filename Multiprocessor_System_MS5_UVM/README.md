@@ -1,165 +1,72 @@
-# Multiprocessor System Verification – Milestone 5 (UVM)
+# ECE-593 Group 9 — Milestone 5 UVM Testbench
 
-**Course:** ECE 593 – Fundamentals of Pre-Silicon Validation
-**University:** Portland State University
-
----
-
-# Milestone 5 Overview
-
-Milestone 5 focuses on developing a **Universal Verification Methodology (UVM) based testbench** for the multiprocessor system designed in previous milestones.
-
-The objective is to build a **scalable verification environment** capable of validating the behavior of a **4-core multiprocessor system** sharing a common memory interface.
-
-The testbench verifies:
-
-* correct handling of memory requests
-* bus arbitration between processors
-* correct read and write responses
-* system behavior under concurrent processor activity
-
-The verification environment uses **UVM components** such as agents, drivers, monitors, sequencers, scoreboards, and coverage collectors.
+**Course:** ECE-593 Fundamentals of Pre-Silicon Validation  
+**University:** Portland State University — Maseeh College  
+**Instructor:** Prof. Venkatesh Patil
 
 ---
 
-# UVM Testbench Architecture
+## How to Run
 
-The verification environment follows the standard **UVM hierarchical structure**.
-
+**Run from the `Multiprocessor_System_MS5_UVM/` directory:**
 ```
-Test
- └── Environment
-      ├── Core Agent 0
-      │     ├── Sequencer
-      │     ├── Driver
-      │     └── Monitor
-      │
-      ├── Core Agent 1
-      ├── Core Agent 2
-      ├── Core Agent 3
-      │
-      ├── Scoreboard
-      └── Coverage Collector
+cd Multiprocessor_System_MS5_UVM
+vsim -do UVM_TB/run.do
 ```
 
-Each processor core is modeled by a **UVM agent** that generates and monitors memory transactions.
+This single command runs all 5 tests in sequence and generates all reports in `doc/`.
 
----
+### What `run.do` executes:
 
-# UVM Components
+| Test | DUT | Purpose |
+|------|-----|---------|
+| `mp_coverage_test` | Clean | 100% functional coverage closure |
+| `mp_alu_test` | Clean | ALU stress — 1000 transactions |
+| `mp_bug1_test` | Bug 1 | ADD computes A−B (32/32 errors expected) |
+| `mp_bug2_test` | Bug 2 | SHR/SHL swapped (48/48 errors expected) |
+| `mp_bug3_test` | Bug 3 | STORE never writes (80/160 errors expected) |
 
-### Sequence Item
-
-Defines the transaction object used to represent processor memory requests.
-
-### Sequence
-
-Generates randomized memory transactions sent to the DUT.
-
-### Sequencer
-
-Controls the flow of sequence items to the driver.
-
-### Driver
-
-Applies transactions from the sequencer to the DUT interface.
-
-### Monitor
-
-Observes DUT signals and converts them into transactions for checking.
-
-### Agent
-
-Encapsulates driver, sequencer, and monitor for each processor core.
-
-### Environment
-
-Instantiates all agents, scoreboard, and coverage collector.
-
-### Scoreboard
-
-Checks the correctness of DUT responses against expected behavior.
-
-### Coverage Collector
-
-Tracks functional coverage of processor transactions.
-
----
-
-# Project Structure (Milestone 5)
-
+### Expected Output Files in `doc/`
 ```
-Multiprocessor_System_MS5_UVM
-│
-├── rtl
-│   └── mp_dut.sv
-│
-├── UVM_TB
-│   ├── mp_pkg.sv
-│   ├── mp_sequence_item.sv
-│   ├── mp_sequence.sv
-│   ├── mp_driver.sv
-│   ├── mp_monitor.sv
-│   ├── mp_agent.sv
-│   ├── mp_env.sv
-│   ├── mp_scoreboard.sv
-│   ├── mp_coverage.sv
-│   ├── test.sv
-│   └── tb_top.sv
-│
-└── run_ms5.do
+mp_coverage_test.log   → RESULT: ALL TESTS PASSED (0 errors)
+mp_alu_test.log        → RESULT: ALL TESTS PASSED (1000/1000 matches)
+bug1_test.log          → RESULT: 32 TESTS FAILED  (bug correctly caught)
+bug2_test.log          → RESULT: 48 TESTS FAILED  (bug correctly caught)
+bug3_test.log          → RESULT: 80 TESTS FAILED  (bug correctly caught)
+func_cov_report_TOTAL.txt  → 100% clean DUT coverage
+code_cov_report_TOTAL.txt  → 99.75% toggle, 100% branch
 ```
 
 ---
 
-# Running the Simulation
+## UVM Component Files
 
-Compile the design and verification files:
-
-```
-vlog -sv -cover bcesft rtl/*.sv
-vlog -sv -cover bcesft UVM_TB/*.sv
-```
-
-Run the simulation:
-
-```
-vsim -coverage tb_top +UVM_TESTNAME=mp_coverage_test
-run -all
-```
-
-Save coverage results:
-
-```
-coverage save mp_coverage_test.ucdb
-```
-
----
-
-# Coverage Results
-
-The verification environment collects functional and code coverage during simulation.
-
-Coverage results:
-
-| Component | Coverage |
-| --------- | -------- |
-| Testbench | 99.75%   |
-| Interface | 99.75%   |
-| DUT       | 87.3%    |
-| Overall   | 91.54%   |
-
-The results demonstrate that the UVM environment effectively exercises most of the design functionality.
+| File | Role |
+|------|------|
+| `sequence_item.sv` | Transaction object (opcode, addr, A, B, data) |
+| `sequence.sv` | Base + scenario sequences (1000 random txns) |
+| `driver.sv` | req/gnt handshake, cycle-accurate stimulus |
+| `monitor.sv` | Captures DUT response → sends to scoreboard |
+| `agent.sv` | Bundles sequencer + driver + monitor per core |
+| `scoreboard.sv` | Shadow RAM reference model, MATCH/MISMATCH |
+| `coverage.sv` | 89-bin covergroup (CROSS_CORE_OP, CROSS_MEM_REGION) |
+| `env.sv` | 4 agents + scoreboard + coverage |
+| `test.sv` | mp_test, mp_alu_test, mp_coverage_test |
+| `bug_tests.sv` | mp_bug1/2/3_test + directed sequences |
+| `assertions.sv` | 3 SVA properties (A1 grant latency, A2 rvalid, A3 mutex) |
+| `interface.sv` | mp_intf — connects TB to DUT |
+| `tb_top.sv` | Clean DUT top |
+| `tb_top_bug.sv` | Bug-switchable DUT top |
+| `mp_pkg.sv` | Package includes |
+| `run.do` | QuestaSim simulation script |
 
 ---
 
-# Milestone 5 Achievements
+## RTL Bug Files
 
-* Implemented full **UVM verification architecture**
-* Created **four processor agents**
-* Implemented **driver, monitor, sequencer, and scoreboard**
-* Added **functional coverage collection**
-* Executed randomized verification tests
-* Generated coverage reports
-
-
+| File | Bug |
+|------|-----|
+| `rtl/mp_dut_demo.sv` | Switchable via `BUG_SELECT_0/1/2/3` defines |
+| `rtl/mp_dut_bug1.sv` | Standalone: ADD → A−B |
+| `rtl/mp_dut_bug2.sv` | Standalone: SHR/SHL swapped |
+| `rtl/mp_dut_bug3.sv` | Standalone: STORE disabled |
