@@ -32,7 +32,10 @@ The goal of this milestone is to validate:
 
 Generator-based processors are used instead of full instruction-level CPU cores to simplify early system-level validation.
 
-## Directory StructureMultiprocessor_System_MS1_Trad/
+## Directory Structure
+
+```
+Multiprocessor_System_MS1_Trad/
 ├── README.md
 ├── doc/
 │   ├── README.md
@@ -43,9 +46,10 @@ Generator-based processors are used instead of full instruction-level CPU cores 
 │   ├── generator.sv
 │   └── mp_top.sv
 └── TRAD_TB/
-├── README.md
-├── mp_top_tb.sv
-└── run.do
+    ├── README.md
+    ├── mp_top_tb.sv
+    └── run.do
+```
 
 ## How to Run Simulation
 
