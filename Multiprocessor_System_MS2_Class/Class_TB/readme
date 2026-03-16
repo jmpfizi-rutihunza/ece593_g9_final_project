@@ -1,1 +1,29 @@
+# Class-Based Testbench — Milestone 2 & 3
 
+This directory contains all class-based verification components for the Multiprocessor System.
+
+## How to Run
+
+From Multiprocessor_System_MS2_Class/:
+
+  vdel -lib work -all
+  vlib work
+  vlog -sv -mfcu -cover bcesf rtl/mp_dut.sv Class_TB/*.sv
+  vsim -coverage work.tb_top
+  run -all
+
+## Component Descriptions
+
+| File                  | Role                                                  |
+|-----------------------|-------------------------------------------------------|
+| transaction.sv        | Transaction object — opcode, addr, operands, data     |
+| generator.sv          | Creates constrained random transactions               |
+| driver.sv             | Translates transactions into DUT pin-level stimulus   |
+| monitor_in.sv         | Observes and records inputs sent to DUT               |
+| monitor_out.sv        | Captures DUT responses and forwards to scoreboard     |
+| scoreboard.sv         | Reference model — predicts and checks results         |
+| coverage_collector.sv | Tracks functional coverage across opcodes and cores   |
+| environment.sv        | Instantiates and connects all components              |
+| intf.sv               | SystemVerilog interface between TB and DUT            |
+| tb_top.sv             | Top-level testbench module                            |
+| run.do                | QuestaSim compile and simulate script                 |
