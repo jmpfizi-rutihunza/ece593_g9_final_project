@@ -58,7 +58,6 @@ Test
 ```
 Multiprocessor_System_MS4_UVM/
 ├── README.md
-├── intf.sv                ← Top-level interface file
 ├── rtl/
 │   └── mp_dut.sv          ← Design Under Test
 ├── UVM_TB/
