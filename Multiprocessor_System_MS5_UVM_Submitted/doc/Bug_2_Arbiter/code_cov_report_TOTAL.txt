@@ -1,0 +1,143 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /tb_top/dut
+=== Design Unit: work.mp_dut
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        18        18         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /tb_top/dut
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File mp_dut.sv
+------------------------------------IF Branch------------------------------------
+    47                                      6020     Count coming in to IF
+    47              1                          4     
+    54              1                       6016     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    58                                      6016     Count coming in to IF
+    58              1                       3006     
+                                            3010     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    63                                      3006     Count coming in to CASE
+    64              1                        258     
+    66              1                        342     
+    67              1                        351     
+    68              1                        195     
+    69              1                        270     
+    73              1                        288     
+    74              1                         81     
+    75              1                        117     
+    76              1                        117     
+    77              1                        129     
+    78              1                        117     
+    79              1                        111     
+    80              1                        147     
+    81              1                        483     
+Branch totals: 14 hits of 14 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       2         1         1    50.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /tb_top/dut --
+
+  File mp_dut.sv
+----------------Focused Condition View-------------------
+Line       58 Item    1  (req && gnt)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+         req         Y
+         gnt         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  req_0                 -                             
+  Row   2:          2  req_1                 gnt                           
+  Row   3:    ***0***  gnt_0                 req                           
+  Row   4:          2  gnt_1                 req                           
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      30        30         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /tb_top/dut --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File mp_dut.sv
+    46              1                       6020     
+    48              1                          4     
+    49              1                          4     
+    50              1                          4     
+    51              1                          4     
+    53              1                          4     
+    53              2                       8192     
+    53              3                       8192     
+    56              1                       6016     
+    59              1                       3006     
+    60              1                       3006     
+    61              1                       3006     
+    64              1                        258     
+    66              1                        342     
+    67              1                        351     
+    68              1                        195     
+    70              1                        270     
+    71              1                        270     
+    73              1                        288     
+    74              1                         81     
+    75              1                        117     
+    76              1                        117     
+    77              1                        129     
+    78              1                        117     
+    79              1                        111     
+    80              1                        147     
+    81              1                        483     
+    86              1                       6016     
+    87              1                       6016     
+    88              1                       6016     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        128       115        13    89.84%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /tb_top/dut --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                      core_id[0-1]           0           0        0.00 
+                                  core_id_out[0-1]           0           0        0.00 
+                                       p_core[0-1]           0           0        0.00 
+                                             rst_n           0           2       50.00 
+
+Total Node Count     =         64 
+Toggled Node Count   =         57 
+Untoggled Node Count =          7 
+
+Toggle Coverage      =      89.84% (115 of 128 bins)
+
+
+Total Coverage By Instance (filtered view): 84.96%
+

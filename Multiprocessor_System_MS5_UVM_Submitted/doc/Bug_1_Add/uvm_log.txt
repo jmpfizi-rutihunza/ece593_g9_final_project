@@ -1,0 +1,11 @@
+UVM_INFO env.sv(45) @ 0: uvm_test_top.env [ENV] All 4 Core Agents successfully instantiated and configured.
+UVM_INFO test.sv(60) @ 0: uvm_test_top [TOPOLOGY] Displaying ASCII Testbench Topology
+UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+UVM_INFO @ 0: uvm_test_top [CFGPRT] visible resources:
+UVM_INFO @ 0: uvm_test_top.env [CFGPRT] visible resources:
+UVM_INFO sequence.sv(284) @ 0: reporter@@vseq [VSEQ] Dynamic Test: Sharing 1000 total tasks
+UVM_INFO sequence.sv(305) @ 39925: reporter@@vseq [CORE_2] Pool is empty, core is retiring.
+UVM_INFO sequence.sv(305) @ 39965: reporter@@vseq [CORE_3] Pool is empty, core is retiring.
+UVM_INFO sequence.sv(305) @ 40005: reporter@@vseq [CORE_0] Pool is empty, core is retiring.
+UVM_INFO sequence.sv(305) @ 40045: reporter@@vseq [CORE_1] Pool is empty, core is retiring.
+UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 40145: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
